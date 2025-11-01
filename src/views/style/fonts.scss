@@ -1,0 +1,26 @@
+@import './mixins';
+// ------------------------------------------------------
+// 🎨 Обёртки под конкретные шрифты
+// ------------------------------------------------------
+
+@mixin roboto() {
+  @include create-font(
+    'Roboto',
+    '../fonts/Roboto-VariableFont_wdth,wght.ttf',
+  );
+}
+
+@mixin roboto-flex() {
+  @include create-font(
+    'Roboto Flex',
+    '../fonts/RobotoFlex.ttf',
+  );
+}
+
+@mixin roboto-serif() {
+  @include create-font(
+    'Roboto Serif',
+    '../fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf',
+  );
+}
+

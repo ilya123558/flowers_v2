@@ -1,0 +1,27 @@
+@mixin font($name, $url, $format: 'truetype', $weight-range: 100 900, $stretch-range: 75% 125%, $style: normal) {
+  @font-face {
+    font-family: $name;
+    src: url($url) format($format);
+    font-weight: $weight-range;
+    font-stretch: $stretch-range;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@mixin create-font($name, $url, $weight: 400, $stretch: 100%, $style: normal, $format: 'truetype') {
+  @include font(
+    $name,
+    $url,
+    $format,
+    100 900,
+    75% 125%,
+    normal
+  );
+
+  font-family: $name, sans-serif;
+  font-weight: $weight;
+  font-stretch: $stretch;
+  font-style: $style;
+}
+

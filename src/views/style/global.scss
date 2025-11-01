@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './mixins.scss';
+@import './fonts.scss';
+
+body {
+  @include roboto-flex();
+  width: 100wv;
+  height: 100wh;
+  line-height: 100%;
+}
+
+.roboto {
+  @include roboto();
+}
+
+.roboto-flex {
+  @include roboto-flex();
+  
+}
+
+.roboto-serif {
+  @include roboto-serif();
+}
+
+.flex-center {
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
