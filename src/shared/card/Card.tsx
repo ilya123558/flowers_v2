@@ -4,6 +4,7 @@ import { Button } from "../button/Button";
 import { formatPrice } from "@/utils/libs/formatPrice";
 import { TextNowrap } from "../text/text-nowrap/TextNowrap";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export interface IProduct {
   imgSrc: string
@@ -12,10 +13,12 @@ export interface IProduct {
   title: string
   price: number
   points: number
+  isFavorite?: boolean
 }
 
 export const Card = (product: IProduct) => {
   const router = useRouter()
+  const [isFavorite, setIsFavorite] = useState(product.isFavorite || false)
 
   return (
     <div className='!h-auto w-full flex'>
@@ -35,10 +38,19 @@ export const Card = (product: IProduct) => {
                 <path d="M17 20C18.6569 20 20 18.6569 20 17C20 15.3431 18.6569 14 17 14C15.3431 14 14 15.3431 14 17C14 18.6569 15.3431 20 17 20Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </Button>
-            <Button onClick={() => {}} className='active:scale-95'>
-              <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 10C10.7912 10 9 11.7396 9 13.8859C9 15.6185 9.7 19.7305 16.5904 23.8873C16.7138 23.961 16.8555 24 17 24C17.1445 24 17.2862 23.961 17.4096 23.8873C24.3 19.7305 25 15.6185 25 13.8859C25 11.7396 23.2088 10 21 10C18.7912 10 17 12.3551 17 12.3551C17 12.3551 15.2088 10 13 10Z" fill="#D9D9D9" fillOpacity="0.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
+            <Button onClick={() => setIsFavorite(!isFavorite)} className='active:scale-95'>
+              {isFavorite
+                ? (
+                  <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 10C10.7912 10 9 11.7396 9 13.8859C9 15.6185 9.7 19.7305 16.5904 23.8873C16.7138 23.961 16.8555 24 17 24C17.1445 24 17.2862 23.961 17.4096 23.8873C24.3 19.7305 25 15.6185 25 13.8859C25 11.7396 23.2088 10 21 10C18.7912 10 17 12.3551 17 12.3551C17 12.3551 15.2088 10 13 10Z" fill="#E3006B" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )
+                : (
+                  <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 10C10.7912 10 9 11.7396 9 13.8859C9 15.6185 9.7 19.7305 16.5904 23.8873C16.7138 23.961 16.8555 24 17 24C17.1445 24 17.2862 23.961 17.4096 23.8873C24.3 19.7305 25 15.6185 25 13.8859C25 11.7396 23.2088 10 21 10C18.7912 10 17 12.3551 17 12.3551C17 12.3551 15.2088 10 13 10Z" fill="#D9D9D9" fillOpacity="0.5" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                )
+              }
             </Button>
           </div>
         </div>

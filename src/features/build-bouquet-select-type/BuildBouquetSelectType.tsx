@@ -42,7 +42,7 @@ export const BuildBouquetSelectType = () => {
       <Title23px>
         Выберите тип букета
       </Title23px>
-      <ul className="grid grid-cols-5 gap-[16px] h-[145px] mt-[16px]">
+      <ul className="grid grid-cols-5 gap-[16px] h-[125px] mt-[16px]">
         {list.map(({imgSrc, subtitle, title}, index) => (
           <Button key={index} onClick={() => setActiveIndex(index)} className="active:scale-95">
             <DashedWrapper 

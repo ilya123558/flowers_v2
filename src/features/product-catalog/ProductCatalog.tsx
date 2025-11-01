@@ -1,90 +1,9 @@
 import { Button } from "@/shared/button/Button";
 import { Card, IProduct } from "@/shared/card/Card";
+import { productList } from "@/utils/const/product";
 import clsx from "clsx";
 import { useState } from "react";
 
-const productList: IProduct[] = [
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-  {
-    imgSrc: '/images/catalog/product-img.png',
-    tags: ['Люблю', 'Коллекции', 'Люблю', 'Коллекции', 'Люблю', 'Коллекции'],
-    title: 'Розовый шепот Розовый шепот',
-    category: 'Нежные розы и эвкалипт Нежные розы и эвкалипт Нежные розы и эвкалипт', 
-    price: 2390,
-    points: 123
-  },
-]
 
 export const ProductCatalog = () => {
   const [activePage, setActivePage] = useState(1)

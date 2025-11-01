@@ -2,8 +2,10 @@
 import { Button } from "@/shared/button/Button";
 import { setOpenBasket, useAppDispatch } from "@/views/store";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export const HeaderProfile = () => {
+  const router = useRouter()
   const dispatch = useAppDispatch()
   const isAuth = true
   const userData = {
@@ -28,7 +30,7 @@ export const HeaderProfile = () => {
                 </div>
               </div>
             </Button>
-            <div className="relative w-[50px] h-[50px] ml-[17px] mr-[14px]">
+            <div onClick={() => router.push('/profile')} className="relative w-[50px] h-[50px] ml-[17px] mr-[14px] cursor-pointer">
               <Image src={userData.img_url} alt={'user-img'} fill/>
             </div>
             <div className="flex flex-col justify-between">

@@ -29,14 +29,14 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
     setSelectList(prev => prev.map(item => item.title === title ? {...item, isSelect}: item))
   }
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsOpenfilter(false)
-    }
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     setIsOpenfilter(false)
+  //   }
 
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  //   window.addEventListener('scroll', handleScroll, { passive: true })
+  //   return () => window.removeEventListener('scroll', handleScroll)
+  // }, [])
 
   return (
     <section className={clsx("pt-[43px] relative", className, isHidden && showAllProducts && "mb-[200px]")}>
