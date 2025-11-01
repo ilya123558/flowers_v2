@@ -1,0 +1,31 @@
+.navItem {
+  position: relative;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+
+  &:hover{
+    color: #EDBF81;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #EDBF81;
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
