@@ -55,7 +55,7 @@ export const Card = (product: IProduct) => {
           </div>
         </div>
         <div className="p-[16px]">
-          <div className=''>
+          <div className='roboto'>
             <TextNowrap className='text-[22px] font-black'>{product.title}</TextNowrap>
             <TextNowrap className='text-gray text-[14px] mt-[10px]'>{product.category}</TextNowrap>
             <p className='text-[20px] mt-[15px]'>{formatPrice(product.price)}</p>
@@ -93,7 +93,7 @@ export const Card = (product: IProduct) => {
               </div>
             </Button>
             <Button onClick={() => router.push('/product')} className='h-full w-full rounded-[11px] active:scale-95'>
-              <div className="flex-center gap-[8px]">
+              <div className="flex-center gap-[8px] roboto-flex">
                 <p className='text-yellow text-[16px] font-bold'>Подробнее</p>
               </div>
             </Button>

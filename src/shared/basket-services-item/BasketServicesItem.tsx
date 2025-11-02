@@ -3,7 +3,7 @@ import { formatPrice } from "@/utils/libs/formatPrice"
 import { DeleteButton } from "../button/DeleteButton"
 import { Title16px } from "../text/title16px/Title16px"
 import { AnimationHeightWrapper } from "../wrappers/AnimationHeightWrapper"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import clsx from "clsx"
 import { ToggleDefault } from "../toggle/ToggleDefoult"
 import { Tooltip } from "../tooltip/Tooltip"
@@ -13,6 +13,7 @@ import { selectDeliveryList, selectSubscribeDateList } from "@/utils/const/selec
 import { Button } from "../button/Button"
 import { BasketServicesItemSettingSub } from "../basket-services-item-setting-sub/BasketServicesItemSettingSub"
 import { AnimatePresence, motion } from "framer-motion"
+import { DeleteProductModal } from "@/features/delete-product-modal/DeleteProductModal"
 
 export interface IAdditionalServicesProductItem {
   id: string
@@ -41,8 +42,19 @@ type TProps = IAdditionalServicesItem & {
 export const BasketServicesItem = (props: TProps) => {
   const [data, setData] = useState<IAdditionalServicesProductItem[]>([])
   const [premiumDeliveryToggle, setPremiumDeliveryToggle] = useState(false)
-  const service_price = 1900
+  const [isOpenDeleteProductModal, setIsOpenDeleteProductModal] = useState(false)
+  const service_price = 1900 
+  const handleDeleteRef = useRef(() => {})
 
+  const handleDelete = (id: string) => {
+    handleDeleteRef.current = () => {
+      setIsOpenDeleteProductModal(false)
+      props.handleDeleteItem(id)
+    }
+
+    setIsOpenDeleteProductModal(true)
+  }
+  
   useEffect(() => {
     setData(props.items)
   }, [props])
@@ -51,12 +63,17 @@ export const BasketServicesItem = (props: TProps) => {
 
   return (
     <div className="w-full p-[20px] bg-[#444239] rounded-[10px] mb-[25px]">
+      <DeleteProductModal 
+        isOpen={isOpenDeleteProductModal} 
+        setIsOpen={setIsOpenDeleteProductModal} 
+        handleDelete={() => handleDeleteRef.current()} 
+      />
       <ul className="flex flex-col gap-[16px]">
         {data.map((item, index) => (
           <li key={index} className="flex flex-col gap-[12px] border-border-gray pb-[16px] border-b-[1px] border-dashed">
             <div className="flex justify-between items-center">
               <p className="text-[16px] font-bold">{item.title}</p>
-              <DeleteButton onClick={() => props.handleDeleteItem(item.id)} />
+              <DeleteButton onClick={() => handleDelete(item.id)} />
             </div>
             <div className="flex justify-between items-center">
               <p className="text-[14px]">Размер {item.size.title}</p>
@@ -78,33 +95,21 @@ export const BasketServicesItem = (props: TProps) => {
           setToggle={setPremiumDeliveryToggle}
         />
         <div className="relative h-[20px] overflow-hidden mt-[8px]">
-          <AnimatePresence initial={false}>
             {premiumDeliveryToggle ? (
-              <motion.div
-                key="yandex"
-                initial={{ x: -60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 60, opacity: 0 }}
-                transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
-                className="absolute w-full flex justify-between items-center"
-              >
-                <p className="text-[14px]">Доставка Яндексом</p>
-                <p className="text-[14px] font-semibold">от {formatPrice(120)} ₽</p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="premium"
-                initial={{ x: -60, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 60, opacity: 0 }}
-                transition={{ type: 'tween', duration: 0.35, ease: 'easeInOut' }}
+              <div
                 className="absolute w-full flex justify-between items-center"
               >
                 <p className="text-[14px]">Премиум-вручение с фотоотчётом</p>
                 <p className="text-[14px] font-semibold">от {formatPrice(2500)} ₽</p>
-              </motion.div>
+              </div>
+            ) : (
+              <div
+                className="absolute w-full flex justify-between items-center"
+              >
+                <p className="text-[14px]">Доставка Яндексом</p>
+                <p className="text-[14px] font-semibold">от {formatPrice(120)} ₽</p>
+              </div>
             )}
-          </AnimatePresence>
         </div>
       </div>
       <div className="mt-[16px] bg-opasity-gray w-full h-[2px]"></div>

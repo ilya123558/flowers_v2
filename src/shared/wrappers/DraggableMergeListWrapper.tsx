@@ -38,7 +38,7 @@ export const DraggableMergeListWrapper = <T,>({
     return ({ active, droppableContainers, collisionRect }) => {
       if (!collisionRect) return []
       const aCenterX = collisionRect.left + collisionRect.width / 2
-      const aCenterY = collisionRect.top + collisionRect.height / 2
+      const aCenterY = collisionRect.top + collisionRect.height / 4
       let best: { id: string } | null = null
       for (const c of droppableContainers) {
         if (c.id === active.id) continue
