@@ -51,7 +51,7 @@ export const BuildBouquetSelectType = () => {
               <div className="h-full flex-center">
                 <Image src={imgSrc} alt="type-img" width={62} height={62} className="min-w-[62px]"/>
               </div>
-              <div className="">
+              <div className="text-start">
                 <h5 className={clsx("text-[17.5px] font-black transition-all", activeIndex === index && 'text-yellow')}>{title}</h5>
                 <p className={clsx("mt-[10px] text-[12.7px] text-gray transition-all", activeIndex === index && 'text-yellow')}>{subtitle}</p>
               </div>
