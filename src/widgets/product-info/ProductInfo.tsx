@@ -64,13 +64,13 @@ export const ProductInfo = () => {
               </div>
             </BoxWrapper>
           </Button>
-          <Button onClick={() => {}} className="h-full active:scale-95">
+          {/* <Button onClick={() => {}} className="h-full active:scale-95">
             <BoxWrapper className="h-full p-[0px_7px] flex-center">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M14.6608 2.76765C15.5775 2.87432 16.25 3.66515 16.25 4.58848V17.4993L10 14.3743L3.75 17.4993V4.58848C3.75 3.66515 4.42167 2.87432 5.33917 2.76765C8.43599 2.40818 11.564 2.40818 14.6608 2.76765Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </BoxWrapper>
-          </Button>
+          </Button> */}
           <Button onClick={() => {}} className="h-full active:scale-95">
             <BoxWrapper className="h-full p-[0px_7px] flex-center">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
