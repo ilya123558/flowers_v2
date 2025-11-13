@@ -136,7 +136,7 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
         >
           <AnimationHeightWrapper isOpen={!isOpenfilter} className={!isOpenfilter ? (scrollStarted ? "!m-[15px]": "!m-[35px_0px]") : "!m-0"}>
             <div className="flex items-center gap-[20px] pt-[5px] min-h-[30px]">
-              <Title23px className="pl-[16px]">{selectList.filter(item => item.isSelect).length === 0 ? "Ничего не выбрано" : "Выбрано"}</Title23px>
+              <Title23px className={scrollStarted ? "" : "pl-[16px]"}>{selectList.filter(item => item.isSelect).length === 0 ? "Ничего не выбрано" : "Выбрано"}</Title23px>
               <div className="flex gap-[15px] overflow-x-scroll pr-[16px]">
                 {selectList.filter(item => item.isSelect).map(item => (
                   <div key={item.title} className="border-yellow border-[1px] rounded-[10px] p-[10px] flex-center gap-[5px] text-nowrap">
