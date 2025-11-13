@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { Button } from "@/shared/button/Button";
 import clsx from "clsx";
 import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
+import { LgHidden } from "@/shared/wrappers/SizeHidden";
 
 const imageList = [
   '/images/product/product-main.png', 
@@ -41,7 +42,7 @@ export const ProductSlider = () => {
               <Button 
                 onClick={() => setActiveIndex(index)} 
                 className={clsx(
-                  "aspect-[105/89] relative w-[105px] rounded-[14px] !transition-none overflow-hidden border-[#3a4980] flex items-center justify-center", 
+                  "aspect-[105/89] relative w-full rounded-[14px] !transition-none overflow-hidden border-[#3a4980] flex items-center justify-center", 
                   activeIndex === index ? 'border-[3px]' : 'border-[0px]'
                 )}
               >
@@ -61,17 +62,19 @@ export const ProductSlider = () => {
           </svg>
         </Button>
       </div>
-      <BoxWrapper className="mt-[16px] w-full h-[96px] flex items-center justify-between p-[0px_54px_0px_24px]">
-        <div className="flex-center gap-[8px]">
-          <div className="relative w-[40px] h-[32.5px]">
-            <Image src={'/images/product/question.png'} alt="question" fill />
+      <LgHidden>
+        <BoxWrapper className="mt-[16px] w-full h-[96px] flex items-center justify-between p-[0px_54px_0px_24px]">
+          <div className="flex-center gap-[8px]">
+            <div className="relative w-[40px] h-[32.5px]">
+              <Image src={'/images/product/question.png'} alt="question" fill />
+            </div>
+            <p className="w-[220px] text-secondary text-[14px] leading-[100%]">Трудно определиться? Понимаем. Поэтому мы всегда на связи для консультаций</p>
           </div>
-          <p className="w-[220px] text-secondary text-[14px] leading-[100%]">Трудно определиться? Понимаем. Поэтому мы всегда на связи для консультаций</p>
-        </div>
-        <Button onClick={() => {}}>
-          <p className="underline text-nowrap text-light-gray text-[14px] font-medium">Открыть Телеграм</p>
-        </Button>
-      </BoxWrapper>
+          <Button onClick={() => {}}>
+            <p className="underline text-nowrap text-light-gray text-[14px] font-medium">Открыть Телеграм</p>
+          </Button>
+        </BoxWrapper>
+      </LgHidden>
     </div>
   );
 };

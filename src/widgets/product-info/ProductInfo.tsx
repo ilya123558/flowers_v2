@@ -9,6 +9,7 @@ import { BasketButton } from "@/shared/button/BasketButton";
 import { Button } from "@/shared/button/Button";
 import { Title16px } from "@/shared/text/title16px/Title16px";
 import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
+import { emotionsList } from "@/utils/const/main";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -17,8 +18,6 @@ export const ProductInfo = () => {
   const [isOpenProductSizeModal, setIsOpenProductSizeModal] = useState(false)
   const [isOpenProductTagModal, setIsOpenProductTagModal] = useState(false)
   const [isOpenProductServiceInfoModal, setIsOpenProductServiceInfoModal] = useState(false)
-  const tagsList = ['Люблю', 'Коллекции Букеты созданные из сезонных цветов']
-  const sizesList = ['XS', 'S', 'M', 'L', 'XL']
   const flowersList = [
     {
       title: 'Красный тюльпан',
@@ -81,17 +80,17 @@ export const ProductInfo = () => {
         </div>
       </div>
       <p className="mt-[8px] text-[16px] text-title-gray">Жёлтые тюльпаны и герберы</p>
-      <ul className="mt-[16px] flex gap-[8px]">
-        {tagsList.map((tag, index) => (
+      <ul className="mt-[16px] flex gap-[8px] overflow-x-scroll">
+        {emotionsList.map((emotion, index) => (
           <li key={index}>
             <BoxWrapper className="p-[8px_12px] w-fit">
-              <p className="text-title-gray text-[14px] font-semibold">{tag}</p>
+              <p className="text-title-gray text-[14px] font-semibold text-nowrap">{emotion}</p>
             </BoxWrapper>
           </li>
         ))}
       </ul>
       <Title16px className="mt-[16px]">Из чего состоит букет:</Title16px>
-      <ul className="mt-[8px] flex gap-[8px]">
+      <ul className="mt-[8px] flex gap-[8px] overflow-x-scroll">
         {flowersList.map(({title, src}, index, arr) => {
           if(arr.length > 4 && index > 3) {
             if(index === arr.length - 1) {
@@ -99,7 +98,7 @@ export const ProductInfo = () => {
                 <li key={index}>
                   <Button onClick={() => setIsOpenProductTagModal(true)} className="active:scale-95 h-full">
                     <BoxWrapper className="p-[5.5px_10px] w-fit flex gap-[4px] items-center h-full">
-                      <p className="text-title-gray text-[14px] font-semibold">...</p>
+                      <p className="text-title-gray text-[14px] font-semibold text-nowrap">...</p>
                     </BoxWrapper>
                   </Button>
                 </li>
@@ -117,7 +116,7 @@ export const ProductInfo = () => {
                   <div className="relative w-[32px] aspect-square">
                     <Image src={src} alt="flower" fill />
                   </div>
-                  <p className="text-title-gray text-[14px] font-semibold">{title}</p>
+                  <p className="text-title-gray text-[14px] font-semibold text-nowrap">{title}</p>
                 </BoxWrapper>
               </Button>
             </li>
@@ -131,16 +130,18 @@ export const ProductInfo = () => {
           <Title16px className="mt-[16px] underline">Оценить размер</Title16px>
         </Button>
       </div>
-      <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex} sizesList={sizesList}/>
+      <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex}/>
       <div className="w-full bg-box-gray h-[1px] mt-[24px]"></div>
-      <div className="mt-[24px] flex gap-[20px] items-center">
-        <h5 className="text-[34px] font-semibold">2 390 ₽</h5>
-        <Button onClick={() => setIsOpenProductServiceInfoModal(true)} className="flex-center gap-[5px] w-fit active:scale-95">
-          <p className="text-[14px] font-medium">+ 1 900 ₽ за сервис</p>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7 0C3.13438 0 0 3.13438 0 7C0 10.8656 3.13438 14 7 14C10.8656 14 14 10.8656 14 7C14 3.13438 10.8656 0 7 0ZM7.5 10.375C7.5 10.4438 7.44375 10.5 7.375 10.5H6.625C6.55625 10.5 6.5 10.4438 6.5 10.375V6.125C6.5 6.05625 6.55625 6 6.625 6H7.375C7.44375 6 7.5 6.05625 7.5 6.125V10.375ZM7 5C6.80374 4.99599 6.61687 4.91522 6.47948 4.775C6.3421 4.63478 6.26515 4.4463 6.26515 4.25C6.26515 4.0537 6.3421 3.86522 6.47948 3.725C6.61687 3.58478 6.80374 3.50401 7 3.5C7.19626 3.50401 7.38313 3.58478 7.52052 3.725C7.6579 3.86522 7.73485 4.0537 7.73485 4.25C7.73485 4.4463 7.6579 4.63478 7.52052 4.775C7.38313 4.91522 7.19626 4.99599 7 5Z" fill="#8C8C8C"/>
-          </svg>
-        </Button>
+      <div className="mt-[24px] flex sm:flex-row flex-col gap-[20px] sm:items-center">
+        <div className="flex gap-[20px] items-center">
+          <h5 className="text-[34px] font-semibold">2 390 ₽</h5>
+          <Button onClick={() => setIsOpenProductServiceInfoModal(true)} className="flex-center gap-[5px] w-fit active:scale-95">
+            <p className="text-[14px] font-medium">+ 1 900 ₽ за сервис</p>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 0C3.13438 0 0 3.13438 0 7C0 10.8656 3.13438 14 7 14C10.8656 14 14 10.8656 14 7C14 3.13438 10.8656 0 7 0ZM7.5 10.375C7.5 10.4438 7.44375 10.5 7.375 10.5H6.625C6.55625 10.5 6.5 10.4438 6.5 10.375V6.125C6.5 6.05625 6.55625 6 6.625 6H7.375C7.44375 6 7.5 6.05625 7.5 6.125V10.375ZM7 5C6.80374 4.99599 6.61687 4.91522 6.47948 4.775C6.3421 4.63478 6.26515 4.4463 6.26515 4.25C6.26515 4.0537 6.3421 3.86522 6.47948 3.725C6.61687 3.58478 6.80374 3.50401 7 3.5C7.19626 3.50401 7.38313 3.58478 7.52052 3.725C7.6579 3.86522 7.73485 4.0537 7.73485 4.25C7.73485 4.4463 7.6579 4.63478 7.52052 4.775C7.38313 4.91522 7.19626 4.99599 7 5Z" fill="#8C8C8C"/>
+            </svg>
+          </Button>
+        </div>
         <div className="p-[8px_12px] flex gap-[4px] items-center bg-dark rounded-[10px]">
           <div className="relative w-[16px] aspect-square">
             <Image src={'/images/product/coins.png'} alt="coins" fill />
@@ -148,7 +149,7 @@ export const ProductInfo = () => {
           <p className="text-[14px] font-semibold text-gray">вы получите 135 балла</p>
         </div>
       </div>
-      <div className="mt-[12px] flex gap-[8px] items-center text-gray">
+      <div className="sm:mt-[12px] mt-[8px] flex sm:flex-row flex-col gap-[8px] sm:items-center text-gray">
         <div className="p-[12px] flex gap-[4px] items-center bg-dark rounded-[10px]">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M14 5.5C14 3.84333 12.6007 2.5 10.8747 2.5C9.58467 2.5 8.47667 3.25067 8 4.322C7.52333 3.25067 6.41533 2.5 5.12467 2.5C3.4 2.5 2 3.84333 2 5.5C2 10.3133 8 13.5 8 13.5C8 13.5 14 10.3133 14 5.5Z" fill="#B3B3B3"/>
@@ -165,14 +166,14 @@ export const ProductInfo = () => {
           <p className="text-[14px] font-semibold">67 отзывов. <span className="underline">Посмотреть</span></p>
         </Button>
       </div>
-      <div className="flex items-center gap-[16px] h-[71px] mt-[24px]">
-        <Button onClick={() => {}} className="bg-yellow flex-center gap-[8px] h-full p-[0px_26px] rounded-[11px] active:scale-95">
+      <div className="flex items-center gap-[16px] sm:h-[71px] h-[50px] mt-[24px]">
+        <Button onClick={() => {}} className="bg-yellow flex-center gap-[8px] h-full sm:p-[0px_26px] p-[0px_12px] rounded-[11px] active:scale-95 sm:w-fit w-full">
           <div className="relative w-[21px] aspect-square">
             <Image src={'/images/product/lightning.png'} alt="lightning" fill />
           </div>
-          <p className="text-black font-bold text-[20px]">Купить сейчас</p>
+          <p className="text-black font-bold sm:text-[20px] text-[16px] text-nowrap">Купить сейчас</p>
         </Button>
-        <BasketButton handleClick={() => {}} withBorder />
+        <BasketButton handleClick={() => {}} withBorder className="sm:w-fit w-full"/>
       </div>
       <AdditionaServices />
     </div>
