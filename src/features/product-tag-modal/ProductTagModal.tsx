@@ -21,10 +21,10 @@ export const ProductTagModal = (props: TProps) => {
   const flowersList = ['Красный тюльпан', 'Роза', 'Жёлтый тюльпан', 'Оранжевая роза', 'Роза', 'Красный тюльпан', 'Роза', 'Жёлтый тюльпан', 'Оранжевая роза', 'Роза',]
 
   return (
-    <ModalWrapper {...props} className="aspect-[562/472] w-[562px]">
+    <ModalWrapper {...props} className="aspect-[562/472] sm:w-[562px] w-[340px]">
       <div className="text-[#D9D9D9]">
         <div className="flex items-center justify-between">
-          <h5 className="text-[18px] font-bold">Цветы в букете Солнечный день</h5>
+          <h5 className="sm:text-[18px] text-[14px] font-bold">Цветы в букете Солнечный день</h5>
           <Button 
             onClick={() => props.setIsOpen(false)} 
             className="text-[14px] font-medium underline active:scale-95"
@@ -32,7 +32,7 @@ export const ProductTagModal = (props: TProps) => {
               Закрыть
           </Button>
         </div>
-        <div className="grid grid-cols-12 gap-[25px] w-full h-full mt-[25px]">
+        <div className="grid grid-cols-12 sm:gap-[25px] gap-[10px] w-full h-full mt-[25px]">
           <div className="col-span-8 w-full aspect-square">
             <SliderWrapper 
               slidesPerView={1} 
@@ -63,11 +63,11 @@ export const ProductTagModal = (props: TProps) => {
               </SwiperSlide>
             </SliderWrapper>
           </div>
-          <div className="col-span-4 w-full aspect-[140/336] overflow-hidden overflow-y-scroll pb-[30px]">
+          <div className="col-span-4 w-full sm:aspect-[140/336] aspect-[140/310] overflow-hidden overflow-y-scroll pb-[30px]">
             <ul className="flex flex-col gap-[11px]">
               {flowersList.map((flowers, index) => (
                 <li key={index}>
-                  <Button onClick={() => setActiveFlowersIndex(index)} className="active:scale-95">
+                  <Button onClick={() => setActiveFlowersIndex(index)} className="sm:active:scale-95 active:scale-[0.98]">
                     <BoxWrapper className={clsx("w-fit p-[12px_10px] rounded-[8px] border-[1px] border-transparent", activeFlowersIndex === index && '!border-yellow')}>
                       <p className="text-white text-[14px] font-medium">{flowers}</p>
                     </BoxWrapper>

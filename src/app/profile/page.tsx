@@ -16,8 +16,8 @@ export default function Page () {
   const [activeValue, setActiveValue] = useState<ProfileNavItems[1]>(navItems[0])
 
   return (
-    <section className="mb-[200px] roboto">
-      <Container className="mt-[56px]">
+    <section className="sm:mb-[200px] roboto">
+      <Container className="sm:mt-[56px] mt-[20px]">
         <div className="border-b-[1px] border-[#404040]">
           <NavAnimated 
             list={navItems}
@@ -25,17 +25,20 @@ export default function Page () {
             setActiveValue={setActiveValue}
           />
         </div>
+      </Container>
         <div>
           {isAuth
             ? (
               <>
-                <h4 className="text-[24px] font-bold mt-[40px] text-[#C8C8C8]">
-                  {activeValue === ProfileNavItems.Favorites && `Избранные букеты (${6})`}
-                  {activeValue === ProfileNavItems.PersonalData && 'Мои данные'}
-                  {activeValue === ProfileNavItems.HistoryAndBonuses && ''}
-                  {activeValue === ProfileNavItems.Subscriptions && 'Мои подписки'}
-                </h4>
-                <div className="mt-[40px]">
+                <Container>
+                  <h4 className="lg:text-[24px] text-[16px] font-bold lg:mt-[40px] mt-[20px] text-[#C8C8C8]">
+                    {activeValue === ProfileNavItems.Favorites && `Избранные букеты (${6})`}
+                    {activeValue === ProfileNavItems.PersonalData && 'Мои данные'}
+                    {activeValue === ProfileNavItems.HistoryAndBonuses && ''}
+                    {activeValue === ProfileNavItems.Subscriptions && 'Мои подписки'}
+                  </h4>
+                </Container>
+                <div className="lg:mt-[40px] mt-[20px]">
                   {activeValue === ProfileNavItems.Favorites && <ProfileFavorites />}
                   {activeValue === ProfileNavItems.PersonalData && <ProfilePersonalData />}
                   {activeValue === ProfileNavItems.HistoryAndBonuses && <ProfileHistoryAndBonuses />}
@@ -45,7 +48,7 @@ export default function Page () {
             )
             : (
               <ProfileUnauth>
-                {activeValue === ProfileNavItems.Favorites && `Избранные букеты (${6})`}
+                {activeValue === ProfileNavItems.Favorites && 'Избранные букеты'}
                 {activeValue === ProfileNavItems.PersonalData && 'Мои данные'}
                 {activeValue === ProfileNavItems.HistoryAndBonuses && 'История и бонусы'}
                 {activeValue === ProfileNavItems.Subscriptions && 'Мои подписки'}
@@ -53,7 +56,6 @@ export default function Page () {
             )
           }
         </div>
-      </Container>
     </section>
   )
 }

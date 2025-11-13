@@ -21,7 +21,7 @@ export const Card = (product: IProduct) => {
   const [isFavorite, setIsFavorite] = useState(product.isFavorite || false)
 
   return (
-    <div className='!h-auto w-full flex'>
+    <div className='!h-auto sm:w-full w-[90%] flex'>
       <BoxWrapper className='rounded-[16px] overflow-hidden h-full w-full bg-[#2D2D2D]'>
         <div className="aspect-[290/345] w-full relative">
           <Image onClick={() => router.push('/product')} src={product.imgSrc} alt='product-img' fill className="cursor-pointer"/>
@@ -60,27 +60,17 @@ export const Card = (product: IProduct) => {
             <TextNowrap className='text-gray text-[14px] mt-[10px]'>{product.category}</TextNowrap>
             <p className='text-[20px] mt-[15px]'>{formatPrice(product.price)}</p>
             <ul className="flex gap-[8px] h-[43px] mt-[10px]">
-              {product.tags.map((tag, i, tagArr) => {
-                if(tagArr.length > 2 && i >= 2) {
-                  if(i === (tagArr.length - 1)) {
-                    return (
-                      <li key={i} className='bg-[#252525] flex-center p-[0px_10px] rounded-[8px]'>
-                        ...
-                      </li>
-                    )
-                  }
+              {product.tags.slice(0, 2).map((tag, i) => (
+                <li key={i} className="bg-[#252525] flex-center p-[0px_10px] rounded-[8px]">
+                  {tag}
+                </li>
+              ))}
 
-                  return (
-                    <></>
-                  )
-                }
-
-                return (
-                  <li key={i} className='bg-[#252525] flex-center p-[0px_10px] rounded-[8px]'>
-                    {tag}
-                  </li>
-                )
-              })}
+              {product.tags.length > 2 && (
+                <li className="bg-[#252525] flex-center p-[0px_10px] rounded-[8px]">
+                  ...
+                </li>
+              )}
             </ul>
           </div>
           <div className="mt-[16px] flex items-center gap-[9px] h-[42px]">

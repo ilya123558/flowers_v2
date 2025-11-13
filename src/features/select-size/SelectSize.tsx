@@ -1,18 +1,18 @@
 'use client'
 import { Button } from "@/shared/button/Button";
 import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
+import { sizesList } from "@/utils/const/main";
 import { TClassName } from "@/utils/types/main";
 import clsx from "clsx";
 
 type TProps = TClassName<{
   activeSizeIndex: number
   setActiveSizeIndex: (activeSizeIndex: number) => void
-  sizesList: string[]
 }>
 
-export const SelectSize = ({sizesList, className, activeSizeIndex, setActiveSizeIndex}: TProps) => {
+export const SelectSize = ({className, activeSizeIndex, setActiveSizeIndex}: TProps) => {
   return (
-    <ul className={clsx("mt-[8px] flex gap-[8px]", className)}>
+    <ul className={clsx("mt-[8px] flex sm:gap-[8px] gap-[6px] overflow-x-scroll", className)}>
       {sizesList.map((size, index) => (
         <li key={index}>
           <Button onClick={() => setActiveSizeIndex(index)} className="active:scale-95">

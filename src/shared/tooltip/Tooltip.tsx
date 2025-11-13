@@ -1,12 +1,14 @@
 'use client'
+import clsx from 'clsx'
 import { useState, useEffect, useRef } from 'react'
 
 interface TooltipProps {
   text: string
   children: React.ReactNode
+  classNameText?: string
 }
 
-export const Tooltip = ({ text, children }: TooltipProps) => {
+export const Tooltip = ({ text, children, classNameText }: TooltipProps) => {
   const [visible, setVisible] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -57,7 +59,7 @@ export const Tooltip = ({ text, children }: TooltipProps) => {
       </div>
 
       {visible && (
-        <div className="absolute z-50 w-max max-w-[305px] p-[16px] bg-[#2B2A24] rounded-[8px] left-0 top-[30px]">
+        <div className={clsx("absolute z-50 w-max max-w-[305px] p-[16px] bg-[#2B2A24] rounded-[8px] left-0 top-[30px]", classNameText)}>
           <p className='text-[#B9BBBF] text-[16px]'>{text}</p>
         </div>
       )}

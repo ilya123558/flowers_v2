@@ -37,6 +37,7 @@ export interface IAdditionalServicesItem {
 type TProps = IAdditionalServicesItem & {
   isTarget?: boolean
   handleDeleteItem: (id: string) => void
+  isOrder?: boolean
 }
 
 export const BasketServicesItem = (props: TProps) => {
@@ -62,7 +63,7 @@ export const BasketServicesItem = (props: TProps) => {
   if(!data || data.length === 0) return <></>
 
   return (
-    <div className="w-full p-[20px] bg-[#444239] rounded-[10px] mb-[25px]">
+    <div className={clsx("w-full p-[20px] bg-[#444239] rounded-[10px] mb-[25px]", props.isOrder && "!bg-[#212121] text-[#D9D9D9]")}>
       <DeleteProductModal 
         isOpen={isOpenDeleteProductModal} 
         setIsOpen={setIsOpenDeleteProductModal} 

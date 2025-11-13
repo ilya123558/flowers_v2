@@ -3,17 +3,10 @@ import Link from 'next/link'
 import styles from './HeaderNav.module.scss'
 import clsx from 'clsx'
 import { usePathname } from 'next/navigation'
+import { navItems } from '@/utils/const/nav'
 
 export const HeaderNav = () => {
   const pathname = usePathname()
-
-  const navItems = [
-    { title: 'Главная', link: '/' },
-    { title: 'Каталог', link: '/catalog' },
-    { title: 'Цветы в коробках', link: '/flowers-in-box' },
-    { title: 'Подписка', link: '/subscribe' },
-    { title: 'Контакты', link: '/contact' },
-  ]
 
   return (
     <nav className="h-full">

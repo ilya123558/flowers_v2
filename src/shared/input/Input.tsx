@@ -19,7 +19,7 @@ export const Input = ({setValue, value, className, label, classNameText, placeho
           placeholder={placeholder}
           value={value}
           onChange={e => setValue(e.target.value)} 
-          className="w-full flex justify-between items-center bg-[#111111] p-[16px_17.5px] rounded-[11px] relative focus:outline-none text-[14px] "
+          className="w-full flex justify-between items-center bg-[#111111] sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative focus:outline-none text-[14px] "
         />
       </div>
     </div>

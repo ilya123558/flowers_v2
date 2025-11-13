@@ -2,8 +2,11 @@
 import { Button } from "@/shared/button/Button";
 import { Checkbox } from "@/shared/checkbox/Checkbox";
 import { PriceSlider } from "@/shared/price-slider/PriceSlider";
+import { Title16px } from "@/shared/text/title16px/Title16px";
 import { Title23px } from "@/shared/text/title23px/Title23px";
 import { DashedWrapper } from "@/shared/wrappers/DashedWrapper";
+import { LgHidden } from "@/shared/wrappers/SizeHidden";
+import { LgShow } from "@/shared/wrappers/SizeShow";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -53,14 +56,26 @@ export const BuildBouquetSelectBudget = () => {
 
   return (
     <div className="">
-      <div className="flex justify-between items-center">
-        <Title23px>
-          Каков ваш бюджет
-        </Title23px>
-        <Checkbox isChecked={includeServiceCost} setIsChecked={setIncludeServiceCost}>
-          <p className="text-[#8C8C8C]">Включить стоимость сервиса</p>
-        </Checkbox>
-      </div>
+      <LgHidden>
+        <div className="flex justify-between items-center">
+          <Title23px>
+            Каков ваш бюджет
+          </Title23px>
+          <Checkbox isChecked={includeServiceCost} setIsChecked={setIncludeServiceCost}>
+            <p className="text-[#8C8C8C]">Включить стоимость сервиса</p>
+          </Checkbox>
+        </div>
+      </LgHidden>
+      <LgShow>
+        <div className="flex flex-col gap-[16px] pl-[16px]">
+          <Title16px>
+            Каков ваш бюджет
+          </Title16px>
+          <Checkbox isChecked={includeServiceCost} setIsChecked={setIncludeServiceCost}>
+            <p className="text-[#8C8C8C]">Включить стоимость сервиса</p>
+          </Checkbox>
+        </div>
+      </LgShow>
       <PriceSlider
         minValue={minValue}
         maxValue={maxValue}

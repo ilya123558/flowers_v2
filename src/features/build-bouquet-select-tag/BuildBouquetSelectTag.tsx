@@ -1,7 +1,9 @@
 'use client'
 import { Button } from "@/shared/button/Button";
-import { Title23px } from "@/shared/text/title23px/Title23px";
+import { Tooltip } from "@/shared/tooltip/Tooltip";
 import { DashedWrapper } from "@/shared/wrappers/DashedWrapper";
+import { LgHidden } from "@/shared/wrappers/SizeHidden";
+import { LgShow } from "@/shared/wrappers/SizeShow";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
@@ -46,29 +48,71 @@ const list = [
 ]
 
 export const BuildBouquetSelectTag = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState<null | number>(0)
+
+  const handleClick = (index: number) => {
+    if(index === activeIndex) {
+      setActiveIndex(null)
+    }
+    else{
+      setActiveIndex(index)
+    }
+  }
 
   return (
     <div className="">
-      <Title23px>
-        Выберите эмоцию — букет сам подстроится под ваше чувство
-      </Title23px>
-      <ul className="flex flex-wrap gap-[16px] mt-[16px]">
-        {list.map(({imgSrc, title}, index) => (
-          <li key={index}>
-            <Button onClick={() => setActiveIndex(index)} className="active:scale-95">
-              <DashedWrapper 
-                className={`w-fit rounded-[19px] flex items-center gap-[9.5px] h-full ${activeIndex === index ? '!border-solid !border-[3px] !border-yellow p-[4.5px_12.7px]': 'p-[6.5px_14.7px]'}`}
-              >
-                <div className="h-full flex-center">
-                  <Image src={imgSrc} alt="type-img" width={69} height={69} className="min-w-[69px]"/>
+      <LgHidden>
+        <div className="max-w-fit">
+          <Tooltip text="Курьер в костюме и белых перчатках вручит букет по этикету. Согласуем время и после пришлём отчёт с реакцией." classNameText="min-w-[103%]">
+            <span className="text-[23px] font-medium text-title-gray !leading-[60%]">Выберите эмоцию — букет сам подстроится под ваше чувство</span>
+          </Tooltip>
+        </div>
+        <ul className="flex flex-wrap gap-[16px] mt-[16px]">
+          {list.map(({imgSrc, title}, index) => (
+            <li key={index}>
+              <Button onClick={() => handleClick(index)} className="active:scale-95">
+                <DashedWrapper 
+                  className={`w-fit rounded-[19px] flex items-center gap-[9.5px] h-full ${activeIndex === index ? '!border-solid !border-[3px] !border-yellow p-[4.5px_12.7px]': 'p-[6.5px_14.7px]'}`}
+                >
+                  <div className="h-full flex-center">
+                    <Image src={imgSrc} alt="type-img" width={69} height={69} className="min-w-[69px]"/>
+                  </div>
+                  <h5 className={clsx("text-[17.5px] transition-all", activeIndex === index && 'text-yellow')}>{title}</h5>
+                </DashedWrapper>
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </LgHidden>
+      <LgShow>
+        <div className="max-w-fit px-[16px]">
+          <Tooltip text="Курьер в костюме и белых перчатках вручит букет по этикету. Согласуем время и после пришлём отчёт с реакцией." classNameText="min-w-[103%]">
+            <span className="text-[16px] font-medium text-title-gray !leading-[60%]">Выберите эмоцию — букет сам подстроится под ваше чувство</span>
+          </Tooltip>
+        </div>
+        <ul className="flex gap-[8px] mt-[16px] overflow-x-scroll px-[16px]">
+          {list.map(({imgSrc, title}, index) => (
+            <li key={index}>
+              <Button onClick={() => handleClick(index)} className="active:scale-[0.98] relative">
+                <DashedWrapper 
+                  className={`w-fit rounded-[19px] flex items-center gap-[9.5px] h-full ${activeIndex === index ? '!border-solid !border-[3px] !border-yellow p-[4.5px_12.7px]': 'p-[6.5px_14.7px]'}`}
+                >
+                  <div className="h-full flex-center">
+                    <Image src={imgSrc} alt="type-img" width={69} height={69} className="min-w-[69px]"/>
+                  </div>
+                  <h5 className={clsx("text-[17.5px] transition-all", activeIndex === index && 'text-yellow')}>{title}</h5>
+                </DashedWrapper>
+                <div className={clsx("transition-all absolute bottom-[7px] right-[8px] opacity-0 pointer-events-none", activeIndex === index && "opacity-100")}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="16" height="16" fill="white" fillOpacity="0.01"/>
+                    <path d="M15.1437 2.25H13.8955C13.7205 2.25 13.5544 2.33036 13.4473 2.46786L6.08478 11.7946L2.55442 7.32143C2.50101 7.25362 2.43294 7.1988 2.35531 7.16106C2.27768 7.12333 2.19252 7.10368 2.1062 7.10357H0.85799C0.738347 7.10357 0.672275 7.24107 0.74549 7.33393L5.63656 13.5304C5.86513 13.8196 6.30442 13.8196 6.53478 13.5304L15.2562 2.47857C15.3294 2.3875 15.2633 2.25 15.1437 2.25Z" fill="#FFCC00"/>
+                  </svg>
                 </div>
-                <h5 className={clsx("text-[17.5px] transition-all", activeIndex === index && 'text-yellow')}>{title}</h5>
-              </DashedWrapper>
-            </Button>
-          </li>
-        ))}
-      </ul>
+              </Button>
+            </li>
+          ))}
+        </ul>
+      </LgShow>
     </div>
   );
 };

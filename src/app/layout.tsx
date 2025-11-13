@@ -4,6 +4,8 @@ import { ProviderWrapper } from "@/shared/wrappers/ProviderWrapper";
 import { Basket } from "@/widgets/basket/Basket";
 import { Header } from "@/widgets/header/Header";
 import { Footer } from "@/widgets/footer/Footer";
+import { InitWrapper } from "@/shared/wrappers/InitWrapper";
+import { ChatWidget } from "@/widgets/chat-widget/ChatWidget";
 
 // if add next js font 
 // import { Inter } from "next/font/google";
@@ -23,14 +25,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <ProviderWrapper>
-        <body className="bg-main-bg text-main">
-          <Header />
-          <Basket />
-          <div className="">
-            {children}
-          </div>
-          <Footer />
-        </body>
+        <InitWrapper>
+          <body className="bg-main-bg text-main">
+            <Header />
+            <Basket />
+            <div className="">
+              {children}
+            </div>
+            <Footer />
+            {/* <ChatWidget /> */}
+          </body>
+        </InitWrapper>
       </ProviderWrapper>
     </html>
   );

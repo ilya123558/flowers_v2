@@ -60,11 +60,11 @@ export const InputSelect = ({selectList, children, activeItem, handleChange, cla
 
   return (
     <div ref={selectRef} className={clsx('w-full', className)}>
-      {children && <p className={clsx("text-[#8C8C8C] text-[16px] mb-[4px] leading-[151%]", classNameText)}>{children}</p>}
+      {children && <p className={clsx("text-[#8C8C8C] sm:text-[16px] text-[14px] mb-[4px] leading-[151%]", classNameText)}>{children}</p>}
       <div className="relative z-10">
         <Button 
           onClick={handleClick} 
-          className="w-full flex justify-between items-center bg-[#111111] p-[16px_17.5px] rounded-[11px] relative"
+          className="w-full flex justify-between items-center bg-[#111111] sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative"
         >
           <p className="text-[14px] text-white">{activeItem?.title || ''}</p>
           <div className={`transition-all ${isOpen && 'rotate-180'}`}>
@@ -83,7 +83,7 @@ export const InputSelect = ({selectList, children, activeItem, handleChange, cla
             <li 
               onClick={() => onChange(item)} 
               className={clsx(
-                'flex items-center p-[16px_17.5px] border-border-gray cursor-pointer', 
+                'flex items-center sm:p-[16px_17.5px] p-[14px_17.5px] border-border-gray cursor-pointer', 
                 activeItem.value === item.value && 'bg-[#ffffff17]', 
                 index !== arr.length - 1 && 'border-b-[1px]'
               )}

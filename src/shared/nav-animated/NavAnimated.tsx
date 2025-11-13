@@ -10,17 +10,15 @@ interface INavLinkAnimatedProps {
 }
 
 export const NavAnimated = ({activeValue, setActiveValue, list}: INavLinkAnimatedProps) => {
-
-
   return (
     <nav className="h-full">
-      <ul className="flex items-center gap-[55px] h-full">
+      <ul className="flex items-center sm:gap-[55px] gap-[20px] h-full">
         {list.map((item, index) => {
           return (
             <li
               key={index}
               className={clsx(
-                'text-[15px]',
+                'sm:text-[15px] text-[12px] leading-[100%]',
                 styles.navItem,
                 activeValue === item && '!text-yellow'
               )}

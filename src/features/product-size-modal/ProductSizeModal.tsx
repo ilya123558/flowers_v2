@@ -6,6 +6,7 @@ import { TClassName } from "@/utils/types/main";
 import { SelectSize } from "../select-size/SelectSize";
 import { useState } from "react";
 import Image from "next/image";
+import { sizesList } from "@/utils/const/main";
 
 type TProps = TClassName<{
   isOpen: boolean
@@ -14,10 +15,9 @@ type TProps = TClassName<{
 
 export const ProductSizeModal = (props: TProps) => {
   const [activeSizeIndex, setActiveSizeIndex] = useState(0)
-  const sizesList = ['XS', 'S', 'M', 'L', 'XL']
 
   return (
-    <ModalWrapper {...props} className="aspect-[376/617] w-[376px]">
+    <ModalWrapper {...props} className="aspect-[376/617] sm:w-[376px] w-[330px]">
       <div className="text-[#D9D9D9]">
         <div className="flex items-center justify-between">
           <h5 className="text-[18px] font-bold">Оцените размер букета</h5>
@@ -30,7 +30,7 @@ export const ProductSizeModal = (props: TProps) => {
         </div>
         <div className="mt-[25px]">
           <Title16px>Выберите размер:</Title16px>
-          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex} sizesList={sizesList}/>
+          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex}/>
         </div>
         <div className="mt-[8px] relative w-full aspect-[328/428]">
           <Image src={`/images/product/flowers-size-${sizesList[activeSizeIndex]}.png`} alt="flowers-size" quality={100} fill />

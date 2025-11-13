@@ -70,16 +70,19 @@ export const Select = ({selectList, children, activeItem, handleChange, classNam
             : {}
           } 
           onClick={handleClick} 
-          className="w-full flex justify-between items-center border-[1px]  border-border-gray p-[13px_16px] rounded-[11px] relative"
+          className={`w-full flex justify-between items-center ${!bgColor && "border-[1px]"} border-border-gray sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative`}
         >
           <p className="text-[14px] text-white">{activeItem?.title || ''}</p>
           <div className={`transition-all ${isOpen && 'rotate-180'}`}>
-            <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            {/* <svg width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M0.707031 0.707031L10.207 10.207L19.707 0.707031" stroke="#ADADAD" strokeWidth="2"/>
+            </svg> */}
+            <svg width="14" height="9" viewBox="0 0 14 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.710938 0.707031L6.71094 6.70703L12.7109 0.707031" stroke="#797979" strokeWidth="2"/>
             </svg>
           </div>
         </Button>
-        <ul 
+        <ul
           style={bgColor 
             ? {
               backgroundColor: bgColor

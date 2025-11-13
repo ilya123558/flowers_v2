@@ -28,8 +28,8 @@ export const PriceSlider = ({
     ((val - minLimit) / (maxLimit - minLimit)) * 100
 
   return (
-    <div className="w-full mt-[40px] mb-[29px] flex justify-center">
-      <div className="relative w-[95%]">
+    <div className="w-full lg:mt-[40px] mt-[12px] mb-[29px] flex justify-center">
+      <div className="relative lg:w-[95%] w-[90%] lg:px-[0px] px-[16px]">
         <Slider
           value={[minValue, maxValue]}
           min={minLimit}

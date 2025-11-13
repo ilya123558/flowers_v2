@@ -9,16 +9,19 @@ import {
   useSensor,
   useSensors,
   PointerSensor,
+  TouchSensor,
   type CollisionDetection,
 } from "@dnd-kit/core"
 import { motion } from "framer-motion"
 
+/* ---------- Props ---------- */
 interface DraggableMergeListProps<T> {
   items: T[]
   onChange: (newList: T[]) => void
   renderItem: (item: T, isTarget: boolean) => React.ReactNode
 }
 
+/* ---------- Main Component ---------- */
 export const DraggableMergeListWrapper = <T,>({
   items,
   onChange,
@@ -30,10 +33,13 @@ export const DraggableMergeListWrapper = <T,>({
   const [opacityRatio, setOpacityRatio] = useState(1)
   const [returnToOrigin, setReturnToOrigin] = useState(false)
 
+  // ✅ Добавлены оба сенсора — Pointer и Touch
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 10 } })
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(TouchSensor, { activationConstraint: { delay: 120, tolerance: 6 } })
   )
 
+  // ---------- Collision detection ----------
   const collisionDetection: CollisionDetection = useMemo(() => {
     return ({ active, droppableContainers, collisionRect }) => {
       if (!collisionRect) return []
@@ -55,8 +61,10 @@ export const DraggableMergeListWrapper = <T,>({
     }
   }, [])
 
+  // ---------- Drag start ----------
   const handleDragStart = (e: any) => {
     document.body.style.cursor = 'grabbing'
+    document.body.style.touchAction = 'none' // 🔧 нужно для Safari / iOS
     setActiveId(e.active.id)
     setHoveredId(null)
     setScaleRatio(1)
@@ -64,6 +72,7 @@ export const DraggableMergeListWrapper = <T,>({
     setReturnToOrigin(false)
   }
 
+  // ---------- Drag over ----------
   const handleDragOver = (event: any) => {
     const { active, over } = event
     if (!active) return
@@ -89,8 +98,10 @@ export const DraggableMergeListWrapper = <T,>({
     setOpacityRatio(opacity)
   }
 
+  // ---------- Drag end ----------
   const handleDragEnd = (e: DragEndEvent) => {
     document.body.style.cursor = 'default'
+    document.body.style.touchAction = 'auto' // 🔧 возвращаем скролл
     const { active, over } = e
     setHoveredId(null)
 
@@ -138,7 +149,7 @@ export const DraggableMergeListWrapper = <T,>({
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div className="flex flex-col gap-[14px]">
+      <div className="flex flex-col gap-[14px] select-none touch-manipulation">
         {items.map((item, index) => {
           const id = index.toString()
           return (
@@ -177,7 +188,7 @@ export const DraggableMergeListWrapper = <T,>({
   )
 }
 
-/* ---------- Internal UI ---------- */
+/* ---------- Internal: Draggable ---------- */
 const DraggableCard = ({
   id,
   children,
@@ -211,6 +222,7 @@ const DraggableCard = ({
         ...draggingStyles,
         ...placeholderStyles,
         cursor: isDragging ? 'grabbing' : 'grab',
+        touchAction: 'none', // 🔧 предотвращает залипание при скролле
       }}
       animate={
         isDragging
@@ -226,6 +238,7 @@ const DraggableCard = ({
   )
 }
 
+/* ---------- Internal: Droppable ---------- */
 const DroppableCard = ({
   id,
   disabled,

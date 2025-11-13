@@ -18,7 +18,7 @@ export const FullscreenLoopVideo: React.FC<Props> = ({
   return (
     <section
       // background: ;
-      className={clsx("relative w-full aspect-[1802/705] overflow-hidden", className)}
+      className={clsx("relative w-full lg:aspect-[1802/705] aspect-[400/350] overflow-hidden", className)}
     >
       <video
         autoPlay
@@ -44,14 +44,14 @@ export const FullscreenLoopVideo: React.FC<Props> = ({
       </video>
       {/* <div style={{background:'linear-gradient(0deg, rgba(115, 115, 115, 0) 20%, #221403 80%, #000 100%)'}} className='absolute top-0 left-0 w-full h-[178px]'/> */}
       <div
-        className="absolute top-0 left-0 w-full h-[178px]"
+        className="absolute lg:top-0 top-[-10px] left-0 w-full h-[178px]"
         style={{
           background:
             'linear-gradient(180deg, #000 0%, rgba(34, 20, 3, 0.9) 5%, rgba(0,0,0,0) 100%)',
         }}
       />
       <div
-        className="absolute bottom-0 left-0 w-full h-[178px] "
+        className="absolute bottom-[-5px] left-0 w-full h-[178px] "
         style={{
           height: 'calc(100%)',
           background: 'linear-gradient(180deg, rgba(115, 115, 115, 0) 20.65%, rgba(34, 20, 3, 0.8) 78%,  rgba(34, 20, 3, 0.9) 98%, #000 100%)',

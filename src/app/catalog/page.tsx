@@ -5,7 +5,7 @@ import { Header } from "@/widgets/header/Header";
 export default function Page () {
   return (
     <section className="">
-      <div className="mb-[320px]">
+      <div className="lg:mb-[320px]">
         <Catalog />
       </div>
     </section>

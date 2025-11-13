@@ -39,9 +39,9 @@ export const HomeInfoList = () => {
   ]
 
   return (
-    <div ref={containerRef} className="grid grid-cols-3 gap-[16px] mt-[60px] roboto cursor-pointer select-none">
+    <div ref={containerRef} className="lg:grid flex lg:px-[0px] px-[16px] grid-cols-3 gap-[16px] lg:mt-[60px] mt-[16px] roboto cursor-pointer select-none lg:overflow-x-auto overflow-x-scroll">
       {list.map(({icon, text, title}, i) => (
-        <div key={i} className={clsx('w-full p-[17.25px_16px] bg-[#1E1D1A] relative transition-all rounded-[24px]', styles.card)}>
+        <div key={i} className={clsx('lg:min-w-full min-w-[250px] p-[17.25px_16px] bg-[#1E1D1A] relative transition-all rounded-[24px]', styles.card)}>
           <div className="relative w-[84px] aspect-square">
             <Image src={icon} alt='icon' fill />
           </div>

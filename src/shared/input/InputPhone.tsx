@@ -46,14 +46,14 @@ export const InputPhone = ({
       {label && (
         <p
           className={clsx(
-            "text-[#8C8C8C] text-[16px] mb-[4px] leading-[151%]",
+            "text-[#8C8C8C] sm:text-[16px] text-[14px] mb-[4px] leading-[151%]",
             classNameText
           )}
         >
           {label}
         </p>
       )}
-      <div className="relative z-10">
+      <div className="relative">
         <input
           placeholder={placeholder}
           value={value}
@@ -61,7 +61,7 @@ export const InputPhone = ({
           onChange={handleChange}
           maxLength={18}
           inputMode="tel"
-          className="w-full flex justify-between items-center bg-[#111111] p-[16px_17.5px] rounded-[11px] relative focus:outline-none text-[14px]"
+          className="w-full flex justify-between items-center bg-[#111111] sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative focus:outline-none text-[14px]"
         />
       </div>
     </div>

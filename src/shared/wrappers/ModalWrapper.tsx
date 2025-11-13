@@ -38,7 +38,7 @@ export const ModalWrapper = ({ isOpen, setIsOpen, children, className }: TProps)
             zIndex: 10,
           }}
         >
-          <div className={clsx("min-w-[100px] min-h-[100px] bg-modal-inner-bg border-[1px] border-border-gray border-dashed rounded-[10px] p-[24px]", className)}>
+          <div className={clsx("min-w-[100px] min-h-[100px] bg-modal-inner-bg border-[1px] border-border-gray border-dashed rounded-[10px] sm:p-[24px] p-[14px]", className)}>
             {children}
           </div>
         </div>
