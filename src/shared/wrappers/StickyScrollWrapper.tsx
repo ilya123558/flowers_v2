@@ -5,7 +5,7 @@ import { Container } from "../container/Container"
 
 type TProps = {
   children: React.ReactNode
-  isOpen: boolean           // ← новое
+  isOpen: boolean
   offset?: number
   className?: string
   bgClass?: string
@@ -17,7 +17,7 @@ export const StickyScrollWrapper = ({
   isOpen,
   offset = 100,
   className,
-  bgClass = "bg-secondary-bg border-b-[1px] border-[#00000075]",
+  bgClass = "bg-secondary-bg",
   withoutContainer
 }: TProps) => {
 
