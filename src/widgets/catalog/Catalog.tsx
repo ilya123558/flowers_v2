@@ -47,11 +47,11 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
   // }, [])
 
   return (
-    <section className={clsx("pt-[43px] mt-[-1px] relative", className, isHidden && showAllProducts && "mb-[200px]")}>
+    <section className={clsx("pt-[43px] mt-[-1px] relative", className, isHidden && showAllProducts && "mb-[200px]", !isHidden && "!pt-[10px]")}>
       <div className="absolute w-screen left-0 top-0 max-h-[1700px] h-full bg-secondary-bg z-[-1]"></div>
       <Container className="">
         <LgHidden>
-          <div className="flex items-center justify-between mb-[27px]">
+          <div className={clsx("flex items-center justify-between mb-[27px]", !isHidden && "!mt-[43px]")}>
             <h2 className="text-white-light-grey text-[50px] font-extrabold leading-[100%]">Каталог цветов</h2>
             <div className="flex items-center gap-[25px]">
               <Button onClick={() => {}} className="bg-opasity-bg-gray p-[11px_16px] rounded-[20px] active:scale-95">
@@ -135,7 +135,7 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
           withoutContainer
         >
           <AnimationHeightWrapper isOpen={!isOpenfilter} className={!isOpenfilter ? (scrollStarted ? "!m-[15px]": "!m-[35px_0px]") : "!m-0"}>
-            <div className="flex items-center gap-[20px] pt-[5px]">
+            <div className="flex items-center gap-[20px] pt-[5px] min-h-[30px]">
               <Title23px className="pl-[16px]">{selectList.filter(item => item.isSelect).length === 0 ? "Ничего не выбрано" : "Выбрано"}</Title23px>
               <div className="flex gap-[15px] overflow-x-scroll pr-[16px]">
                 {selectList.filter(item => item.isSelect).map(item => (
