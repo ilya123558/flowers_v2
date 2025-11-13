@@ -56,7 +56,7 @@ export const BasketContant = ({ isOrder }: IProps) => {
 
   return (
     <div className="relative w-full h-full">
-      <div className={clsx("p-[24px] roboto", isOrder && "p-0")}>
+      <div className={clsx("p-[24px] roboto", isOrder && "!p-0")}>
         <div className="flex items-center justify-between text-secondary mb-[25px]">
           <h4>Корзина</h4>
           {!isOrder && (

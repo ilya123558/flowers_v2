@@ -142,11 +142,11 @@ export const OrderDetails = () => {
           <p className="text-[#252525] text-[16px] font-semibold leading-[100%]">Оплатить {formatPrice(61655)} ₽ </p>
         </Button>
       </div>
-      <div className="mt-[20px] w-full flex justify-between p-[16px] rounded-[8px] bg-[#373737]">
+      <div className="mt-[20px] w-full flex justify-between sm:flex-row flex-col items-center p-[16px] rounded-[8px] bg-[#373737]">
         <p className="text-[16px] font-medium leading-[151%]">Остались вопросы?</p>
         <Button onClick={() => {}} className="flex items-center gap-[8px] active:scale-[0.98]">
           <img src="/images/home/review/telegram.png" alt="telegram" className="w-[21px] h-[21px]"/>
-          <p className="underline">Написать в поддержку</p>
+          <p className="underline text-nowrap">Написать в поддержку</p>
         </Button>
       </div>
     </div>
