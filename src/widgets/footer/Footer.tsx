@@ -5,6 +5,7 @@ import { Container } from "@/shared/container/Container";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
 import { LgShow } from "@/shared/wrappers/SizeShow";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -27,8 +28,8 @@ export const Footer = () => {
                   <p className="text-[16px]">Поддерживаем <br /> клиентов 24/7</p>
                 </div>
                 <div className="flex gap-[24px] mt-[16px] text-[16px] underline text-[#909191]">
-                  <Button onClick={() => {}}>Публичная оферта</Button>
-                  <Button onClick={() => {}}>Политика конфиденциальности</Button>
+                  <Link href={'/service-terms/offer'}>Публичная оферта</Link>
+                  <Link href={'/service-terms/policy'}>Политика конфиденциальности</Link>
                 </div>
               </div>
             </div>
@@ -82,8 +83,8 @@ export const Footer = () => {
                 <p className="text-[16px]">Поддерживаем клиентов 24/7</p>
               </div>
               <div className="flex flex-col justify-center gap-[8px] mt-[16px] text-[16px] underline text-[#909191]">
-                <Button onClick={() => {}}>Публичная оферта</Button>
-                <Button onClick={() => {}}>Политика конфиденциальности</Button>
+                <Link href={'/service-terms/offer'}>Публичная оферта</Link>
+                <Link href={'/service-terms/policy'}>Политика конфиденциальности</Link>
               </div>
               <div className="flex flex-col items-center gap-[2px] mt-[16px] text-[#909191] text-[14px]">
                 <div className="flex gap-[15px]">
