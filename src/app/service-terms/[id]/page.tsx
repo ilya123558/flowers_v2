@@ -8,7 +8,7 @@ import clsx from "clsx"
 import { usePathname, useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 
-type TStateTag = 'payment' | 'delivery' | 'policy' | 'offer'
+type TStateTag = 'payment' | 'delivery' | 'policy' | 'offer' 
 type TState = {title: string, svg: React.ReactNode, value: TStateTag}[]
 
 const list: TState = [
