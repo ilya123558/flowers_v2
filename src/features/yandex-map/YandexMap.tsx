@@ -92,7 +92,7 @@ export const YandexMap = ({className}: TClassName<{}>) => {
   return (
     <div
       ref={mapRef}
-      className={clsx("w-[262px] h-[229px] border border-[#404040] rounded-[8.5px] overflow-hidden", className)}
+      className={clsx("w-[262px] h-[229px] border border-[#404040] rounded-[8.5px] overflow-hidden relative z-0", className)}
     />
   )
 }

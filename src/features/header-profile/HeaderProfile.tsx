@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { LoginModal } from "@/features/login-modal/LoginModal";
 
 export const HeaderProfile = () => {
   const basketCount = 3
@@ -20,6 +21,7 @@ export const HeaderProfile = () => {
   const router = useRouter()
   const dispatch = useAppDispatch()
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const [isOpenAuthModal, setIsOpenAuthModal] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null)
 
   const menuItemClick = (link: string) => {
@@ -152,9 +154,12 @@ export const HeaderProfile = () => {
           </div>
         )
         : (
-          <button>
-            <p className="text-light-pink text-[15px] font-medium">Войти</p>
-          </button>
+          <>
+            <Button onClick={() => setIsOpenAuthModal(true)}>
+              <p className="text-light-pink text-[15px] font-medium">Войти</p>
+            </Button>
+            <LoginModal isOpen={isOpenAuthModal} setIsOpen={setIsOpenAuthModal} />
+          </>
         )
       }
     </div>

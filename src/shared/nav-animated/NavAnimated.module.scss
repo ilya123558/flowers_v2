@@ -10,7 +10,7 @@
   transition: color 0.3s ease;
 
   &:hover{
-    color: #EDBF81;
+    color: #FFCC00;
   }
 
   &::after {
@@ -20,7 +20,7 @@
     bottom: 0;
     height: 2px;
     width: 0;
-    background-color: #EDBF81;
+    background-color: #FFCC00;
     transition: width 0.3s ease, left 0.3s ease;
   }
 

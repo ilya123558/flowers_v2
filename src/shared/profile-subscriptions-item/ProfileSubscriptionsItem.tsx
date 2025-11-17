@@ -80,7 +80,6 @@ export const ProfileSubscriptionsItem = (props: TMySubscription) => {
                 activeItem={productEmotionList.find(item => item.productId === productItem.id)?.activeEmotion || {title: '', value: ''}} 
                 handleChange={(value: ISelectItem) => handleChangeEmotion(value, productItem.id)}
                 selectList={emotionsList.map(item => ({title: item, value: item}))}
-                bgColor="#111111"
               >
                 Выберите эмоцию
               </Select>
@@ -95,7 +94,6 @@ export const ProfileSubscriptionsItem = (props: TMySubscription) => {
             activeItem={{title: activeDeliveryDate, value: activeDeliveryDate}} 
             handleChange={(value: ISelectItem) => setActiveDeliveryDate(value.title as TDeliveryDate)}
             selectList={deliveryDateList.map(item => ({title: item, value: item}))}
-            bgColor="#111111"
           >
             Как часто доставлять
           </Select>
@@ -105,7 +103,6 @@ export const ProfileSubscriptionsItem = (props: TMySubscription) => {
             activeItem={{title: activePreriod, value: activePreriod}} 
             handleChange={(value: ISelectItem) => setActivePreriod(value.title as TPeriod)}
             selectList={periodList.map(item => ({title: item, value: item}))}
-            bgColor="#111111"
           >
             Срок подписки
           </Select>
@@ -116,7 +113,6 @@ export const ProfileSubscriptionsItem = (props: TMySubscription) => {
               activeItem={{title: activeDay, value: activeDay}} 
               handleChange={(value: ISelectItem) => setActiveDay(value.title as TDay)}
               selectList={daysList.map(item => ({title: item, value: item}))}
-              bgColor="#111111"
             >
               День доставки
             </Select>
@@ -126,7 +122,6 @@ export const ProfileSubscriptionsItem = (props: TMySubscription) => {
               activeItem={{title: activeTime, value: activeTime}} 
               handleChange={(value: ISelectItem) => setActiveTime(value.title as TTime)}
               selectList={timeList.map(item => ({title: item, value: item}))}
-              bgColor="#111111"
             >
               Время доставки
             </Select>

@@ -63,14 +63,8 @@ export const Select = ({selectList, children, activeItem, handleChange, classNam
       {children && <p className={clsx("text-secondary text-[16px] mb-[4px]", classNameText)}>{children}</p>}
       <div className="relative z-10">
         <Button 
-          style={bgColor 
-            ? {
-              backgroundColor: bgColor
-              } 
-            : {}
-          } 
           onClick={handleClick} 
-          className={`w-full flex justify-between items-center ${!bgColor && "border-[1px]"} border-border-gray sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative`}
+          className={`w-full flex justify-between items-center bg-[#111111] sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative`}
         >
           <p className="text-[14px] text-white">{activeItem?.title || ''}</p>
           <div className={`transition-all ${isOpen && 'rotate-180'}`}>
@@ -83,14 +77,8 @@ export const Select = ({selectList, children, activeItem, handleChange, classNam
           </div>
         </Button>
         <ul
-          style={bgColor 
-            ? {
-              backgroundColor: bgColor
-              } 
-            : {}
-          }
           className={clsx(
-            "w-full mt-[10px] flex flex-col top-[100%] absolute bg-box-gray left-0 border-[1px]  border-border-gray rounded-[11px] overflow-hidden transition-all",
+            "w-full mt-[10px] flex flex-col top-[100%] absolute bg-[#111111] left-0 border-[1px]  border-border-gray rounded-[11px] overflow-hidden transition-all",
             !isOpen && "opacity-0 pointer-events-none top-[20%]",
           )}
         >
