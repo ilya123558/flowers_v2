@@ -79,7 +79,7 @@ export const BuildBouquetSelectType = () => {
       
       <LgShow>
         <div className="flex justify-between items-center px-[16px]">
-          <p className="uppercase text-[#EBEBEB] text-[32px] font-extrabold leading-[100%] max-w-[85%]">ВЫБЕРИТЕ ТИП БУКЕТА</p>
+          <p className="text-[#EBEBEB] text-[30px] font-extrabold leading-[100%] max-w-[85%]">Выберите тип букета</p>
           <Button onClick={() => setIsShow(!isShow)} className="aspect-square active:scale-95">
             <svg className={clsx("transition-all", isShow && "rotate-180")} width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M19.707 10.9141L10.207 1.41406L0.707031 10.9141" stroke="#ADADAD" strokeWidth="2"/>
@@ -87,11 +87,11 @@ export const BuildBouquetSelectType = () => {
           </Button>
         </div>
         <AnimationHeightWrapper isOpen={isShow}>
-          <ul className="mt-[45px] flex flex-col gap-[8px] overflow-x-scroll px-[16px]">
+          <ul className="mt-[24px] flex flex-col gap-[8px] overflow-x-scroll px-[16px]">
             {list.map(({imgSrc, subtitle, title, isNew}, index) => (
               <Button key={index} onClick={() => setActiveIndex(index)} className="active:scale-[0.99]">
-                <DashedWrapper 
-                  className={`relative rounded-[19px] flex items-center gap-[9.6px] w-full p-[0px_16px] h-[90px] ${activeIndex === index ? '!border-solid !border-[3px] !border-yellow': ''}`}
+                <div 
+                  className={`relative rounded-[19px] flex items-center gap-[9.6px] w-full p-[0px_16px] h-[108px] border-[3px] border-transparent ${activeIndex === index ? '!border-yellow': 'bg-[#2E2E2E]'}`}
                 >
                   <div className="h-full flex-center">
                     <Image src={imgSrc} alt="type-img" width={62} height={62} className="max-w-[70px]"/>
@@ -105,7 +105,7 @@ export const BuildBouquetSelectType = () => {
                       <p className="text-[12px] font-semibold leading-[100%] text-[#252525]">Новинка</p>
                     </div>
                   )}
-                </DashedWrapper>
+                </div>
               </Button>
             ))}
           </ul>

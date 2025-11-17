@@ -34,7 +34,7 @@ const FAQItem = ({text, title}: {title: string, text: string}) => {
         </li>
       </LgHidden>
       <LgShow>
-        <li onClick={() => setIsOpen(!isOpen)} className="p-[17.5px_5px] bg-[#1E1D1A] rounded-[11.5px] cursor-pointer">
+        <li onClick={() => setIsOpen(!isOpen)} className="p-[17.5px_5px] bg-black rounded-[11.5px] cursor-pointer">
           <div className="flex items-center gap-[6px]">
             <svg className={clsx("transition-all", isOpen && "rotate-90")} width="4" height="7" viewBox="0 0 4 7" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M3.10215 3.15764C3.24229 3.35608 3.2423 3.62127 3.10215 3.81971L1.04428 6.73359C0.721332 7.19089 0.00169478 6.96239 0.00169479 6.40256L0.00169488 0.574796C0.00169489 0.0149617 0.721331 -0.213534 1.04428 0.243758L3.10215 3.15764Z" fill="#D9D9D9"/>
@@ -63,7 +63,7 @@ export const FAQ = () => {
   ]
 
   return (
-    <div className="roboto">
+    <div className="roboto bg-secondary-bg">
       <Container>
         <LgHidden>
           <Title55px className="mt-[92px]">Часто задаваемые вопросы</Title55px>
@@ -105,7 +105,7 @@ export const FAQ = () => {
           </div>
         </LgHidden>
         <LgShow>
-          <div className="mt-[24px] mb-[26px]">
+          <div className="pt-[24px] pb-[26px] mb-[-1px] mt-[-1px]">
             <Title23px className="!font-extrabold !text-[#EBEBEB]">Часто задаваемые вопросы</Title23px>
             <div className="mt-[16px]">
               <ul className="flex flex-col gap-[9px]">
@@ -113,7 +113,7 @@ export const FAQ = () => {
                   <FAQItem key={index} {...item} />
                 ))}
               </ul>
-              <div className="p-[20px_16px_30px] bg-[#1E1D1A] rounded-[24px] mt-[9px]">
+              <div className="p-[20px_16px_30px] bg-black rounded-[24px] mt-[9px]">
                 <p className="text-[16px] font-medium">Трудно определиться?</p>
                 <p className="text-[16px] text-[#909191] mt-[16px]">Понимаем, наш флорист подскажет букет под любой повод</p>
                 <div className="mt-[18px] flex flex-col gap-[16px]">

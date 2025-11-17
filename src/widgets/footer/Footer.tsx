@@ -75,7 +75,7 @@ export const Footer = () => {
                   </linearGradient>
                   </defs>
                 </svg>
-                <p className="text-[20px] font-bold text-white">Перейти в Instagram</p>
+                <p className="text-[20px] font-bold text-white">Перейти в Телеграм</p>
               </Button>
             </div>
             <div className="w-full border-b-[1px] border-white border-dashed mt-[16px]"></div>

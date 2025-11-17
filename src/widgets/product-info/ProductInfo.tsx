@@ -10,40 +10,44 @@ import { Button } from "@/shared/button/Button";
 import { Title16px } from "@/shared/text/title16px/Title16px";
 import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
 import { emotionsList } from "@/utils/const/main";
+import { incCount, useAppDispatch } from "@/views/store";
 import Image from "next/image";
 import { useState } from "react";
 
+const flowersList = [
+  {
+    title: 'Красный тюльпан',
+    src: '/images/product/flower-1.png',
+  },
+  {
+    title: 'Роза',
+    src: '/images/product/flower-2.png',
+  },
+  {
+    title: 'Жёлтый тюльпан',
+    src: '/images/product/flower-3.png',
+  },
+  {
+    title: 'Оранжевая роза',
+    src: '/images/product/flower-4.png',
+  },
+  {
+    title: '3 клопа',
+    src: '/images/product/flower-1.png',
+  },
+  {
+    title: '1 гусеница',
+    src: '/images/product/flower-1.png',
+  },
+]
+
 export const ProductInfo = () => {
+  const dispatch = useAppDispatch()
   const [activeSizeIndex, setActiveSizeIndex] = useState(0)
   const [isOpenProductSizeModal, setIsOpenProductSizeModal] = useState(false)
   const [isOpenProductTagModal, setIsOpenProductTagModal] = useState(false)
   const [isOpenProductServiceInfoModal, setIsOpenProductServiceInfoModal] = useState(false)
-  const flowersList = [
-    {
-      title: 'Красный тюльпан',
-      src: '/images/product/flower-1.png',
-    },
-    {
-      title: 'Роза',
-      src: '/images/product/flower-2.png',
-    },
-    {
-      title: 'Жёлтый тюльпан',
-      src: '/images/product/flower-3.png',
-    },
-    {
-      title: 'Оранжевая роза',
-      src: '/images/product/flower-4.png',
-    },
-    {
-      title: '3 клопа',
-      src: '/images/product/flower-1.png',
-    },
-    {
-      title: '1 гусеница',
-      src: '/images/product/flower-1.png',
-    },
-  ]
+  
 
   return (
     <div className=" w-full col-span-7">
@@ -173,7 +177,7 @@ export const ProductInfo = () => {
           </div>
           <p className="text-black font-bold sm:text-[20px] text-[16px] text-nowrap">Купить сейчас</p>
         </Button>
-        <BasketButton handleClick={() => {}} withBorder className="sm:w-fit w-full"/>
+        <BasketButton handleClick={() => dispatch(incCount())} withBorder className="sm:w-fit w-full"/>
       </div>
       <AdditionaServices />
     </div>

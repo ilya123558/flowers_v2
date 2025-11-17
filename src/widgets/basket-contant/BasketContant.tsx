@@ -50,8 +50,12 @@ export const BasketContant = ({ isOrder }: IProps) => {
   const handleClick = () => {
     if(servicesList.length === 0) {
       router.push('/catalog')
-      dispatch(setCloseBasket())
     }
+    else{
+      router.push('/order')
+    }
+    
+    dispatch(setCloseBasket())
   }
 
   return (
@@ -74,7 +78,7 @@ export const BasketContant = ({ isOrder }: IProps) => {
         />
       </div>
       {!isOrder && (
-        <div className="mt-[25px] text-[#D9D9D9] fixed bottom-0 right-0 sm:w-[421px] w-full p-[8px_24px_24px] bg-[#2B2A24] z-[100]">
+        <div className="mt-[25px] text-[#D9D9D9] fixed bottom-0 right-0 sm:w-[421px] w-full p-[8px_24px_24px] bg-[#000000] z-[100]">
           {servicesList.length !== 0 && (
             <div className="flex items-center justify-between">
               <p className="text-[16px] font-medium">Итого за весь заказ</p>

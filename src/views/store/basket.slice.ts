@@ -1,10 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 interface IInitialState {
+  count: number
   isOpen: boolean
 }
 
 const initialState: IInitialState = {
+  count: 3,
   isOpen: false,
 }
 
@@ -12,6 +14,12 @@ const basketSlice = createSlice({
   name: 'basketSlice',
   initialState: initialState,
   reducers: {
+    incCount: (state) => {
+      state.count = state.count !== 10 ? state.count + 1 : 10
+    },
+    decCount: (state) => {
+      state.count = state.count !== 0 ? state.count - 1 : 0
+    },
     setOpenBasket: (state) => {
       state.isOpen = true
     },
@@ -21,5 +29,5 @@ const basketSlice = createSlice({
   },
 })
 
-export const { setCloseBasket, setOpenBasket } = basketSlice.actions
+export const { setCloseBasket, setOpenBasket, decCount, incCount } = basketSlice.actions
 export const basketReducer = basketSlice.reducer

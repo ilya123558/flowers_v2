@@ -3,9 +3,7 @@ import { HeaderLogo } from "@/features/header-logo/HeaderLogo";
 import { HeaderNav } from "@/features/header-nav/HeaderNav";
 import { HeaderProfile } from "@/features/header-profile/HeaderProfile";
 import { Container } from "@/shared/container/Container";
-import { AnimationHeightWrapper } from "@/shared/wrappers/AnimationHeightWrapper";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
-import { LgShow } from "@/shared/wrappers/SizeShow";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useState } from "react";
 

@@ -10,52 +10,54 @@ export const HomePreview = () => {
   return (
     <main className="relative">
       <LgShow>
-        <div className="w-[100%] h-[790px] z-[-1] relative">
+        <div className="w-[100%] h-[720px] relative">
           <img
-            src="/images/home/preview.png"
+            src="/images/product-images/main.jpg"
             alt="preview"
-            className="inset-0 w-full h-[650px] absolute object-cover object-center top-[-40px]"
+            className="inset-0 w-full h-[680px] absolute object-cover object-center top-[-40px]"
           />
-          <div className="absolute w-full left-0 top-[300px] flex flex-col items-end gap-[9px] px-[15px] roboto">
-            <div className="border-yellow border-[1px] rounded-[11px] p-[7.7px_15.8px]">
-              <p className="text-yellow text-[20px] leading-[100%]">XL</p>
+
+          <div className="absolute w-full left-0 top-[300px] flex flex-col items-end px-[15px] roboto">
+            <div className="roboto-serif">
+              <p className="text-[#D9D9D9] text-[41px] font-semibold leading-[100%] line-through">35 000</p>
             </div>
-            <div className="border-yellow border-[1px] rounded-[11px] p-[7.7px_15.8px]">
-              <p className="text-yellow text-[20px] leading-[100%]">101 роза</p>
-            </div>
-            <div className="flex justify-between w-full items-center">
+            <div className="flex items-center justify-between w-full mt-[9.6px]">
+              <div className="flex items-center gap-[14px]">
+                <div className="border-black border-[1px] rounded-[10px] p-[9.5px_16px] bg-[#181818]">
+                  <p className="text-[#B3B3B3] text-[14px] font-semibold leading-[100%]">101 роза</p>
+                </div>
+                <div className="border-black border-[1px] rounded-[10px] p-[9.5px_16px] bg-[#181818]">
+                  <p className="text-[#B3B3B3] text-[14px] font-semibold leading-[100%]">XL</p>
+                </div>
+              </div>
               <div className="flex items-center gap-[9px] h-[35px] roboto-serif">
                 <div className="bg-[#E2AFA0] w-[90px] h-full flex-center rounded-[7.6px]">
                   <p className="text-[25px] font-semibold text-black">16 000</p>
                 </div>
-                <div className="w-[90px] h-full flex-center">
-                  <p className="text-[25px] font-semibold line-through text-[#D9D9D9]">35 000</p>
-                </div>
               </div>
-              <Button onClick={() => {}} className="border-yellow border-[1px] rounded-[11px] p-[16px_26px] active:scale-[0.98]">
-                <p className="text-yellow text-[20px] leading-[100%] font-bold">ПОДРОБНЕЕ</p>
-              </Button>
             </div>
+            <Button onClick={() => {}} className="bg-[#2E2E2E] rounded-[11px] p-[18px] active:scale-[0.98] w-full mt-[13.6px]">
+              <p className="text-[18px] text-yellow font-semibold leading-[100%]">Хочу узнать больше про букет ↑</p>
+            </Button>
           </div>
-          <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full absolute top-[450px]">
-            <Container>
+
+          <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full z-10 absolute top-[500px]">
+            <div className="relative px-[16px]">
+              <div className="absolute bottom-[-55px] h-[120px] left-0 w-full bg-secondary-bg z-[-1]"></div>
               <h2 className="text-[38px] font-black leading-[100%]">
                 Премиальные <br/>
                 букеты по <br/>
                 себестоимости
               </h2>
-              <p className="mt-[21px] text-[22px] leading-[100%]">
-                Мы зарабатываем только на оформлении и премиум доставке по желанию.
-              </p>
               <div className="mt-[24px] w-full">
                 <Button className="rounded-[10.8px] bg-pink p-[17.3px_26px] w-full active:scale-95 roboto" onClick={() => {}}>
                   <p className="text-[18px] font-bold">Найти свой идеальный букет</p>
                 </Button>
-                <div className="mt-[25px] text-[14px] leading-[104%] text-start font-semibold">
-                  За что вы платите? <Link href={'/'} className="underline">Посмотреть на примере →</Link>
-                </div>
+                <p className="mt-[8px] text-[17px] text-[#FFFFFF] leading-[120%]">
+                  Мы зарабатываем только на оформлении и премиум доставке по желанию.
+                </p>
               </div>
-            </Container>
+            </div>
           </div>
         </div>
         {/* <div className="bg-secondary-bg w-full mt-[45px] pb-[4px]">

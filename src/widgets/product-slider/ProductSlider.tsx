@@ -9,14 +9,11 @@ import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
 
 const imageList = [
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
-  '/images/product/product-main.png', 
+  '/images/product-images/img-1.jpg', 
+  '/images/product-images/img-2.jpg', 
+  '/images/product-images/img-3.jpg', 
+  '/images/product-images/img-4.jpg', 
+  '/images/product-images/img-5.jpg', 
 ] 
 
 export const ProductSlider = () => {
@@ -26,7 +23,7 @@ export const ProductSlider = () => {
   return (
     <div className="col-span-5 select-none">
       <div className="w-full aspect-[494/574] relative overflow-hidden border-[1px] border-[#414141] rounded-[17px]">
-        <Image src={imageList[activeIndex]} alt="product-img" quality={100} fill/>
+        <img src={imageList[activeIndex]} alt="product-img" className="object-cover object-center w-full h-full" />
       </div>
       <div className="relative flex-center mt-[16px] w-full">
         <Swiper
@@ -46,7 +43,7 @@ export const ProductSlider = () => {
                   activeIndex === index ? 'border-[3px]' : 'border-[0px]'
                 )}
               >
-                <Image src={src} alt="product-img" quality={100} fill className="object-cover object-center" />
+                <img src={src} alt="product-img" className="object-cover object-center w-full h-full" />
               </Button>
             </SwiperSlide>
           ))}

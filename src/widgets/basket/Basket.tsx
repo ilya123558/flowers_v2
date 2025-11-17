@@ -26,7 +26,7 @@ export const Basket = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.4, ease: 'easeInOut' }}
-            className="h-screen fixed top-0 right-0 sm:w-[421px] w-full bg-[#2B2A24] z-50 overflow-y-scroll shadow-xl"
+            className="h-screen fixed top-0 right-0 sm:w-[421px] w-full bg-[#000000] z-50 overflow-y-scroll shadow-xl"
           >
             <BasketContant />
           </motion.div>

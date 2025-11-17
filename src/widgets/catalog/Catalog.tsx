@@ -93,9 +93,9 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
         </LgHidden>
       </Container>
       <LgShow>
-        <div className="mt-[30px] px-[16px]">
+        <div className="mt-[30px] px-[16px] mb-[16px]">
           <div className="flex justify-between items-center">
-            <h2 className="uppercase text-[#EBEBEB] text-[32px] font-extrabold leading-[100%] max-w-[85%]">Каталог цветов</h2>
+            <h2 className="text-[#838383] text-[22px] font-extrabold leading-[100%] max-w-[85%]">Каталог цветов</h2>
             <Button onClick={() => setIsOpenfilter(!isOpenfilter)} className="aspect-square active:scale-95">
               <svg className={clsx("transition-all", isOpenfilter && "rotate-180")} width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.707 10.9141L10.207 1.41406L0.707031 10.9141" stroke="#ADADAD" strokeWidth="2"/>
@@ -118,32 +118,7 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
             <BuildBouquetSelectBudget />
           </div>
         </AnimationHeightWrapper>
-        <StickyScrollWrapper
-          isOpen={scrollStarted && !isHidden && (selectListLength !== 0)}
-          offset={58}
-          className="bg-secondary-bg"
-          withoutContainer
-        >
-          <AnimationHeightWrapper isOpen={!isOpenfilter} className={!isOpenfilter ? (scrollStarted ? "!m-[15px]": "!m-[35px_0px]") : "!m-0"}>
-            <div className="flex items-center gap-[20px] pt-[5px] min-h-[30px]">
-              <Title23px className={scrollStarted ? "" : "pl-[16px]"}>{selectList.filter(item => item.isSelect).length === 0 ? "Ничего не выбрано" : "Выбрано"}</Title23px>
-              <div className="flex gap-[15px] overflow-x-scroll pr-[16px]">
-                {selectList.filter(item => item.isSelect).map(item => (
-                  <div key={item.title} className="border-yellow border-[1px] rounded-[10px] p-[10px] flex-center gap-[5px] text-nowrap">
-                    <p className="text-[14px]">{item.title}</p>
-                    <Button onClick={() => handleSelectList({...item, isSelect: false})}>
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M8.9257 7.99916L13.6132 2.41166C13.6918 2.31881 13.6257 2.17773 13.5043 2.17773H12.0793C11.9953 2.17773 11.915 2.21523 11.8596 2.27952L7.99356 6.88845L4.12749 2.27952C4.07392 2.21523 3.99356 2.17773 3.90784 2.17773H2.48284C2.36142 2.17773 2.29534 2.31881 2.37392 2.41166L7.06142 7.99916L2.37392 13.5867C2.35631 13.6074 2.34502 13.6327 2.34138 13.6596C2.33774 13.6865 2.3419 13.7139 2.35337 13.7386C2.36484 13.7632 2.38313 13.784 2.40608 13.7985C2.42903 13.8131 2.45568 13.8207 2.48284 13.8206H3.90784C3.99177 13.8206 4.07213 13.7831 4.12749 13.7188L7.99356 9.10988L11.8596 13.7188C11.9132 13.7831 11.9936 13.8206 12.0793 13.8206H13.5043C13.6257 13.8206 13.6918 13.6795 13.6132 13.5867L8.9257 7.99916Z" fill="#8C8C8C"/>
-                      </svg>
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </AnimationHeightWrapper> 
-        </StickyScrollWrapper>
       </LgShow>
-
       <AnimationHeightWrapper isOpen maxHeight={showAllProducts ? 10000 : 1000} className="lg:mt-[32px] mt-[0px] relative">
         <SmShow>
           <ProductCatalog />
