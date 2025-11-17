@@ -52,7 +52,7 @@ export const HomeReview = () => {
       </LgHidden>
       <LgShow>
         <div className="bg-secondary-bg w-full p-[24px_0px_40px]">
-          <p className="leading-[100%] text-[22px] font-extrabold text-[#EBEBEB] px-[16px]">Реальные впечатления <br /> наших клиентов в Телеграм</p>
+          <p className="leading-[100%] text-[32px] font-bold text-[#EBEBEB] px-[16px]">Реальные отзывы</p>
           <div className="flex gap-[16px] mt-[32px] overflow-x-scroll px-[16px]">
             {list.map(({imgSrc, name, text}, index) => (
               <BoxWrapper key={index} className="rounded-[24px] bg-[#1E1D1A] min-w-[290px] h-[338px] p-[16px]">

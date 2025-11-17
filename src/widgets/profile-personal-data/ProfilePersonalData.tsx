@@ -63,7 +63,7 @@ export const ProfilePersonalData = () => {
                 <InputPhone
                   value={item.contactValue}
                   setValue={(value) => handleChangePhone(index, value)}
-                  label="Контакт для связи в WhatsApp"
+                  label="Авторизовать"
                   placeholder="+7 (999) 999 99 99"
                 />
               </div>

@@ -20,23 +20,18 @@ export const Header = () => {
   return (
     <header className="">
       <div className="bg-black roboto w-screen left-0 fixed right-0 z-20 top-0">
-        <LgHidden>
+        {/* <LgHidden>
           <div className="flex-center h-[38px] text-[15px] font-medium text-white-opasity bg-secondary-bg">
             Доставка день-в-день по Южно-Сахалинску при заказе до 18:00
           </div>
-        </LgHidden>
-        <LgShow>
+        </LgHidden> */}
+        {/* <LgShow>
           <AnimationHeightWrapper isOpen={isShowTop} >
-            {/* <div className={`pt-[50px] transition-all ${isShowTop ? "bg-secondary-bg" : "bg-main-bg !pt-[20px]"}`}>
-              <div className={`flex-center h-[38px] text-[15px] font-medium text-white-opasity text-center transition-all px-[16px] ${!isShowTop && "opacity-0 pointer-events-none"}`}>
-                Доставка день-в-день по Южно-Сахалинску при заказе до 18:00
-              </div>
-            </div> */}
             <div className="flex-center text-center px-[16px] h-[38px] text-[15px] font-medium text-white-opasity bg-secondary-bg">
               Доставка день-в-день по Южно-Сахалинску при заказе до 18:00
             </div>
           </AnimationHeightWrapper>
-        </LgShow>
+        </LgShow> */}
         <Container>
           <div className="flex justify-between items-center lg:h-[74px] h-[60px]">
             <HeaderLogo />
@@ -47,7 +42,7 @@ export const Header = () => {
           </div>
         </Container>
       </div>
-      <div className="lg:h-[120px] h-[90px]"></div>
+      <div className="lg:h-[74px] h-[60px]"></div>
     </header>
   );
 };

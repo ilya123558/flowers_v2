@@ -3,4 +3,5 @@ export enum ProfileNavItems {
   HistoryAndBonuses = 'История и бонусы',
   PersonalData = 'Мои данные',
   Favorites = 'Избранные букеты',
+  Events = 'События',
 }

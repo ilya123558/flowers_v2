@@ -60,6 +60,7 @@ export const HomeFlowersInBox = () => {
         </Container>
       </LgHidden>
       <LgShow>
+        <div style={{background: 'linear-gradient(0deg, rgba(115, 115, 115, 0) 20.65%, #212121 83.2%)'}} className="w-full h-[70px] mt-[-1px]"></div>
         <div className="relative w-screen aspect-[402/755] pt-[20px]">
           <div className="absolute top-[40px] left-0 w-full h-full z-[-1]">
             <div className="relative w-full h-full">
@@ -67,11 +68,16 @@ export const HomeFlowersInBox = () => {
             </div>
           </div>
           <div className="flex flex-col justify-between h-full roboto">
-            <Container className="mt-[58px]">
-              <h4 className="text-[27px] leading-[140%]">
-                Новый формат букета <br /> 
-                <span className="text-[43px] font-bold leading-[104%]">в коробке</span>
-              </h4>
+            <Container className="mt-[-60px] roboto-flex">
+              <div className="flex items-center justify-between">
+                <h4 className="text-[43px] leading-[104%]">
+                  Цветы в <br/>коробке
+                </h4>
+                <div className="bg-green roboto rounded-[0px_6px_6px_6px] p-[4px]">
+                  <p className="text-[#252525] text-[12px] leading-[100%]">Новинка</p>
+                </div>
+              </div>
+              <p className="text-[16px] leading-[100%] text-[#B7B7B7] mt-[20px]">Стильный букет в коробке, с ароматом, с подарочной открыткой, которую мы подпишем за вас бесплатно</p>
             </Container>
             <div className="">
               <div className="flex gap-[10px] overflow-x-scroll h-[120px] px-[16px]">
@@ -92,10 +98,7 @@ export const HomeFlowersInBox = () => {
                 }
               </div>
               <Container>
-                <p className="text-[#DDDDDD] text-[20px] mt-[20px]">
-                  Стильный букет в коробке, с ароматом, с подарочной открыткой, которую мы подпишем за вас бесплатно
-                </p>
-                <Button onClick={() => {}} className="bg-pink rounded-[11px] p-[17.3px_26px] w-full active:scale-95 mt-[16px] mb-[36px]">
+                <Button onClick={() => {}} className="bg-pink rounded-[11px] p-[17.3px_26px] w-full active:scale-95 mt-[50px] mb-[36px]">
                   <p className="text-[18.4px] font-bold">Посмотреть все цветы в коробках</p>
                 </Button>
               </Container>

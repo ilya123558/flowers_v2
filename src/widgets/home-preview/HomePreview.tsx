@@ -4,34 +4,61 @@ import { Container } from "@/shared/container/Container";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
 import { LgShow } from "@/shared/wrappers/SizeShow";
 import Image from "next/image";
+import Link from "next/link";
 
 export const HomePreview = () => {
   return (
     <main className="relative">
       <LgShow>
-        <div className="w-[100%] h-[520px] z-[-1] relative">
+        <div className="w-[100%] h-[790px] z-[-1] relative">
           <img
             src="/images/home/preview.png"
             alt="preview"
-            className="inset-0 w-full h-full absolute object-cover object-center"
+            className="inset-0 w-full h-[650px] absolute object-cover object-center top-[-40px]"
           />
-          <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full absolute top-[300px]">
+          <div className="absolute w-full left-0 top-[300px] flex flex-col items-end gap-[9px] px-[15px] roboto">
+            <div className="border-yellow border-[1px] rounded-[11px] p-[7.7px_15.8px]">
+              <p className="text-yellow text-[20px] leading-[100%]">XL</p>
+            </div>
+            <div className="border-yellow border-[1px] rounded-[11px] p-[7.7px_15.8px]">
+              <p className="text-yellow text-[20px] leading-[100%]">101 роза</p>
+            </div>
+            <div className="flex justify-between w-full items-center">
+              <div className="flex items-center gap-[9px] h-[35px] roboto-serif">
+                <div className="bg-[#E2AFA0] w-[90px] h-full flex-center rounded-[7.6px]">
+                  <p className="text-[25px] font-semibold text-black">16 000</p>
+                </div>
+                <div className="w-[90px] h-full flex-center">
+                  <p className="text-[25px] font-semibold line-through text-[#D9D9D9]">35 000</p>
+                </div>
+              </div>
+              <Button onClick={() => {}} className="border-yellow border-[1px] rounded-[11px] p-[16px_26px] active:scale-[0.98]">
+                <p className="text-yellow text-[20px] leading-[100%] font-bold">ПОДРОБНЕЕ</p>
+              </Button>
+            </div>
+          </div>
+          <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full absolute top-[450px]">
             <Container>
               <h2 className="text-[38px] font-black leading-[100%]">
                 Премиальные <br/>
                 букеты по <br/>
                 себестоимости
               </h2>
+              <p className="mt-[21px] text-[22px] leading-[100%]">
+                Мы зарабатываем только на оформлении и премиум доставке по желанию.
+              </p>
               <div className="mt-[24px] w-full">
                 <Button className="rounded-[10.8px] bg-pink p-[17.3px_26px] w-full active:scale-95 roboto" onClick={() => {}}>
                   <p className="text-[18px] font-bold">Найти свой идеальный букет</p>
                 </Button>
-                <p className="mt-[8px] text-[17px] text-start">В 2 раза выгоднее, чем в обычных <br/> цветочных магазинах</p>
+                <div className="mt-[25px] text-[14px] leading-[104%] text-start font-semibold">
+                  За что вы платите? <Link href={'/'} className="underline">Посмотреть на примере →</Link>
+                </div>
               </div>
             </Container>
           </div>
         </div>
-        <div className="bg-secondary-bg w-full mt-[45px] pb-[4px]">
+        {/* <div className="bg-secondary-bg w-full mt-[45px] pb-[4px]">
           <Container>
             <div className="roboto pt-[14px]">
               <div className="flex gap-[16px]">
@@ -72,7 +99,7 @@ export const HomePreview = () => {
               <p className="text-[22px] font-bold leading-[100%] mt-[16px]">Мы зарабатываем только на доставке и оформлении.</p>
             </div>
           </Container>
-        </div>
+        </div> */}
       </LgShow>
       <LgHidden>
         <div className="w-full flex">

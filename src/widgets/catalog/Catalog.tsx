@@ -37,18 +37,9 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
     setSelectList(prev => prev.map(item => item.title === title ? {...item, isSelect}: item))
   }
 
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     setIsOpenfilter(false)
-  //   }
-
-  //   window.addEventListener('scroll', handleScroll, { passive: true })
-  //   return () => window.removeEventListener('scroll', handleScroll)
-  // }, [])
-
   return (
-    <section className={clsx("pt-[43px] mt-[-1px] relative", className, isHidden && showAllProducts && "mb-[200px]", !isHidden && "!pt-[10px]")}>
-      <div className="absolute w-screen left-0 top-0 max-h-[1700px] h-full bg-secondary-bg z-[-1]"></div>
+    <section className={clsx("pt-[1px] mt-[-1px] relative", className, isHidden && showAllProducts && "mb-[200px]", !isHidden && "!pt-[10px]")}>
+      <div className="absolute w-screen left-0 top-0 sm:max-h-[1700px] max-h-[3000px] h-full bg-secondary-bg z-[-1]"></div>
       <Container className="">
         <LgHidden>
           <div className={clsx("flex items-center justify-between mb-[27px]", !isHidden && "!mt-[43px]")}>
@@ -101,11 +92,10 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
           </StickyScrollWrapper>
         </LgHidden>
       </Container>
-
       <LgShow>
         <div className="mt-[30px] px-[16px]">
           <div className="flex justify-between items-center">
-            <h2 className="text-white-light-grey text-[22px] font-extrabold leading-[100%]">Каталог цветов</h2>
+            <h2 className="uppercase text-[#EBEBEB] text-[32px] font-extrabold leading-[100%] max-w-[85%]">Каталог цветов</h2>
             <Button onClick={() => setIsOpenfilter(!isOpenfilter)} className="aspect-square active:scale-95">
               <svg className={clsx("transition-all", isOpenfilter && "rotate-180")} width="21" height="12" viewBox="0 0 21 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19.707 10.9141L10.207 1.41406L0.707031 10.9141" stroke="#ADADAD" strokeWidth="2"/>
@@ -121,10 +111,10 @@ export const Catalog = ({className, isHidden = false}: TProps) => {
             </div>
           </Button>
         </div>
-        <AnimationHeightWrapper isOpen={isOpenfilter} className="">
-          <div className="flex pt-[5px] flex-col lg:gap-[32px] gap-[24px]">
-            <BuildBouquetSelectType />
+        <AnimationHeightWrapper isOpen={isOpenfilter} maxHeight={3000} className="">
+          <div className="flex pt-[5px] flex-col lg:gap-[32px] gap-[24px] mt-[20px]">
             <BuildBouquetSelectTag />
+            <BuildBouquetSelectType />
             <BuildBouquetSelectBudget />
           </div>
         </AnimationHeightWrapper>
