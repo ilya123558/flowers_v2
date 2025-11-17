@@ -5,7 +5,6 @@ import { Basket } from "@/widgets/basket/Basket";
 import { Header } from "@/widgets/header/Header";
 import { Footer } from "@/widgets/footer/Footer";
 import { InitWrapper } from "@/shared/wrappers/InitWrapper";
-import { ChatWidget } from "@/widgets/chat-widget/ChatWidget";
 import { OnlineSupport } from "@/features/online-support/OnlineSupport";
 
 // if add next js font 

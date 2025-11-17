@@ -63,7 +63,7 @@ export const BasketServicesItem = (props: TProps) => {
   if(!data || data.length === 0) return <></>
 
   return (
-    <div className={clsx("w-full p-[20px] bg-[#444239] rounded-[10px] mb-[25px]", props.isOrder && "!bg-[#212121] text-[#D9D9D9]")}>
+    <div className={clsx("w-full p-[20px] bg-[#212121] rounded-[10px] mb-[25px] text-[#D9D9D9]")}>
       <DeleteProductModal 
         isOpen={isOpenDeleteProductModal} 
         setIsOpen={setIsOpenDeleteProductModal} 
@@ -120,7 +120,7 @@ export const BasketServicesItem = (props: TProps) => {
       </div>
       <div 
         className={clsx(
-          "mt-[16px] w-full p-[15px] rounded-[10px] bg-[#36352E] flex items-center gap-[10px] transition-all will-change-transform border-[1px] border-transparent", 
+          "mt-[16px] w-full p-[15px] rounded-[10px] bg-[#111111] flex items-center gap-[10px] transition-all will-change-transform border-[1px] border-transparent", 
           props.isTarget && 'p-[40px_15px] border-yellow '
         )}
       >

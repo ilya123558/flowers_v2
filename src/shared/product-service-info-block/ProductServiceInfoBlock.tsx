@@ -47,10 +47,11 @@ export const ProductServiceInfoBlock = () => {
         <div className="w-full bg-secondary-bg mt-[-1px] pt-[40px] pb-[51px]">
           <div className="text-[#D9D9D9]">
             <div className="flex items-center justify-between px-[16px]">
-              <h5 className="text-[16px]">Рассказываем, из чего складывается цена</h5>
+              <h5 className="text-[16px] leading-[100%]">Из чего складывается цена</h5>
             </div>
-            <p className="text-[22px] font-extrabold px-[16px]">
-              Без скрытых наценок — только сервис
+            <p className="text-[30px] font-extrabold px-[16px] leading-[100%]">
+              Без скрытых наценок <br/>
+              — только сервис
             </p>
             <div className="mt-[16px] flex gap-[40px] text-[#D7D7D7] roboto font-normal overflow-x-scroll overflow-y-hidden px-[40px]">
               {infoList.map(({imgSrc, price, text, size}, index) => (

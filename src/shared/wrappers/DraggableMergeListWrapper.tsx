@@ -19,6 +19,7 @@ interface DraggableMergeListProps<T> {
   items: T[]
   onChange: (newList: T[]) => void
   renderItem: (item: T, isTarget: boolean) => React.ReactNode
+  onMerge?: () => void
 }
 
 /* ---------- Main Component ---------- */
@@ -26,6 +27,7 @@ export const DraggableMergeListWrapper = <T,>({
   items,
   onChange,
   renderItem,
+  onMerge,
 }: DraggableMergeListProps<T>) => {
   const [activeId, setActiveId] = useState<string | null>(null)
   const [hoveredId, setHoveredId] = useState<string | null>(null)
@@ -128,6 +130,7 @@ export const DraggableMergeListWrapper = <T,>({
     if (dragged?.items && target?.items) {
       next[to] = { ...target, items: [...target.items, ...dragged.items] }
       next.splice(from, 1)
+      onMerge?.()
     } else {
       const temp = next[from]
       next[from] = next[to]

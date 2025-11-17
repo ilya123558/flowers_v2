@@ -3,8 +3,8 @@ import { TClassNameWithChildrenAndProps } from "@/utils/types/main";
 import clsx from "clsx";
 import { Button } from "../button/Button";
 import { Calendar } from "../calendar/Calendar";
-import { format } from "date-fns/format";
-import { ru } from "date-fns/locale/ru";
+import { format } from "date-fns";
+import { ru } from "date-fns/locale";
 import { useEffect, useRef, useState } from "react";
 
 type TProps = TClassNameWithChildrenAndProps<{
