@@ -4,10 +4,13 @@ import { HeaderNav } from "@/features/header-nav/HeaderNav";
 import { HeaderProfile } from "@/features/header-profile/HeaderProfile";
 import { Container } from "@/shared/container/Container";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
+import clsx from "clsx";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 export const Header = () => {
+  const isProductPage = usePathname().includes('product')
   const [isShowTop, setIsShowTop] = useState(true)
   const { scrollY } = useScroll()
 
@@ -17,7 +20,7 @@ export const Header = () => {
 
   return (
     <header className="">
-      <div className="bg-black roboto w-screen left-0 fixed right-0 z-20 top-0">
+      <div className={clsx("bg-black roboto w-screen left-0 fixed right-0 z-20 top-0", isProductPage && "!bg-transparent")}>
         {/* <LgHidden>
           <div className="flex-center h-[38px] text-[15px] font-medium text-white-opasity bg-secondary-bg">
             Доставка день-в-день по Южно-Сахалинску при заказе до 18:00

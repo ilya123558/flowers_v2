@@ -105,37 +105,38 @@ export const FAQ = () => {
           </div>
         </LgHidden>
         <LgShow>
-          <div className="pt-[24px] pb-[26px] mb-[-1px] mt-[-1px]">
-            <Title23px className="!font-extrabold !text-[#EBEBEB]">Часто задаваемые вопросы</Title23px>
+          <div className="pt-[35px] pb-[26px] mb-[-1px] mt-[-1px]">
+            {/* <Title23px className="!font-extrabold !text-[#EBEBEB]">Часто задаваемые вопросы</Title23px> */}
             <div className="mt-[16px]">
-              <ul className="flex flex-col gap-[9px]">
+              {/* <ul className="flex flex-col gap-[9px]">
                 {list.map((item, index) => (
                   <FAQItem key={index} {...item} />
                 ))}
-              </ul>
-              <div className="p-[20px_16px_30px] bg-black rounded-[24px] mt-[9px]">
-                <p className="text-[16px] font-medium">Трудно определиться?</p>
-                <p className="text-[16px] text-[#909191] mt-[16px]">Понимаем, наш флорист подскажет букет под любой повод</p>
-                <div className="mt-[18px] flex flex-col gap-[16px]">
-                  <Button onClick={() => {}} className="flex-center gap-[8px] p-[17.5px_16px] bg-[#00699C1A] border-[2px] border-[#3FC1FF] rounded-[10px] active:scale-95">
+              </ul> */}
+              <div className="rounded-[24px] mt-[9px]">
+                <p className="text-[22px] font-medium text-center leading-[100%]">Трудно определиться?</p>
+                {/* <p className="text-[16px] text-[#909191] mt-[16px]">Понимаем, наш флорист подскажет букет под любой повод</p> */}
+                <div className="mt-[36px] flex flex-col gap-[16px]">
+                  <Button onClick={() => {}} className="flex-center gap-[10px] p-[17.5px_16px] bg-[#00699C1A] border-[2px] border-[#3FC1FF] rounded-[10px] active:scale-95">
                     <div className="aspect-square w-[21px] relative">
                       <Image src={'/images/home/review/telegram.png'} alt="telegram" fill />
                     </div>
                     <p className="text-[19px] font-bold">Написать в Telegram</p>
                   </Button>
-                  <Button onClick={() => {}} className="flex-center gap-[8px] p-[17.5px_16px] bg-[#3589051A] border-[2px] border-[#37A806] rounded-[10px] active:scale-95">
+                  <Button onClick={() => {}} className="flex-center gap-[10px] p-[17.5px_16px] bg-[#3589051A] border-[2px] border-[#37A806] rounded-[10px] active:scale-95">
                     <div className="aspect-square w-[21px] relative">
                       <Image src={'/images/home/review/whatsapp.png'} alt="whatsapp" fill />
                     </div>
                     <p className="text-[19px] font-bold">Написать в WhatsApp</p>
                   </Button>
-                  <Button onClick={() => {}} className="flex-center gap-[8px] p-[17.5px_16px] border-[2px] border-[#EDBF81] bg-[#EDBF811A] rounded-[10px] active:scale-95">
+                  <Button onClick={() => {}} className="flex-center gap-[10px] p-[17.5px_16px] border-[2px] border-[#EDBF81] bg-[#EDBF811A] rounded-[10px] active:scale-95">
                     <div className="aspect-square w-[21px] relative">
                       <Image src={'/images/home/review/phone.png'} alt="phone" fill />
                     </div>
                     <p className="text-[19px] font-bold">Позвонить флористу</p>
                   </Button>
                 </div>
+                <p className="text-[#909191] text-[16px] leading-[134%] text-center mt-[18px]">Наш флорист подскажет букет под любое настроение</p>
               </div>
             </div>
           </div>

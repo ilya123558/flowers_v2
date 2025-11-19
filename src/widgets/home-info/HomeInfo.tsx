@@ -18,10 +18,9 @@ export const HomeInfo = () => {
         </div>
       </LgHidden>
       <LgShow>
-        <div className="bg-secondary-bg pt-[24px] pb-[21px]">
-          <div className="px-[16px] text-[#EBEBEB] roboto-flex">
-            <p className="text-[16px] leading-[100%]">Мы не просто привозим букеты —</p>
-            <p className="text-[40px] leading-[100%] font-extrabold">Мы помогаем передать эмоции красиво</p>
+        <div className="bg-secondary-bg pt-[40px] pb-[21px]">
+          <div className="px-[30px] text-[#EBEBEB] roboto-flex">
+            <p className="text-[32px] leading-[100%] uppercase font-extrabold">все услуги</p>
           </div>
           <HomeInfoList />
         </div>

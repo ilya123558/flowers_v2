@@ -105,52 +105,49 @@ export const HomeFlowersInBox = () => {
         </Container>
       </LgHidden>
       <LgShow>
-        <div className="relative">
-          <div className="absolute top-[12px] left-0 w-full">
-            <svg className="w-full" width="402" height="46" viewBox="0 0 402 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M-7 45.2217L97.8756 15.1857C166.251 -4.39666 238.749 -4.39668 307.124 15.1857L412 45.2217" stroke="#818181" stroke-dasharray="2 2"/>
-            </svg>
-          </div>
-        </div>
-        <div style={{background: 'linear-gradient(0deg, rgba(115, 115, 115, 0) 20.65%, #212121 83.2%)'}} className="w-full h-[70px] mt-[-1px]"></div>
-        <div className="text-center roboto relative">
-          <p className="text-[#EBEBEB] text-[24px] leading-[100%]">Новый формат<br/> букета</p>
-          <p className="text-[#EBEBEB] text-[50px] leading-[100%]">в коробке</p>
-          <div className="flex-center flex-col mt-[10px]">
-            <div className="w-fit p-[4px] bg-[#50AF19] roboto rounded-[0px_6px_6px_6px]">
-              <p className="text-[12px] font-semibold leading-[100%] text-[#252525]">Новинка</p>
-            </div>
-            <p className="text-[16px] leading-[100%] text-[#B7B7B7] mt-[12px] max-w-[324px]">
-              Стильный букет в коробке, с ароматом, с подарочной открыткой, которую мы подпишем за вас бесплатно
-            </p>
-          </div>
-        </div>
-        <div className="relative w-screen aspect-[402/500] pt-[20px]">
-          <div className="absolute top-[-120px] left-0 w-full h-full z-[-1]">
-            <div className="relative w-full h-full">
-              <Image src={'/images/home/flowers-in-box/flowers-mobile.png'} alt="flowers" fill className="object-cover object-top"/>
+        <div className="bg-secondary-bg mt-[-1px] mb-[-1px]">
+          <div className="">
+            <div className="flex justify-between items-center gap-[20px] relative p-[32px_43px_32px_16px]">
+              <p className="text-[#EBEBEB] text-[32px] leading-[100%] uppercase font-extrabold">ЦВЕТЫ В КОРОБКЕ</p>
+              <div className="w-fit h-fit p-[4px] bg-[#50AF19] roboto rounded-[0px_6px_6px_6px]">
+                <p className="text-[12px] font-semibold leading-[100%] text-[#252525]">Новинка</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="relative">
-          <div className="absolute w-full bottom-0 z-20">
-            <div className="flex flex-col justify-between h-full roboto">
-              <div className="">
-                <div className="flex gap-[10px] overflow-x-scroll px-[16px]">
-                  {
-                    list.map(({svg, title}, index) => (
-                      <div key={index} className="w-full flex justify-center text-center gap-[3px] flex-col p-[7.8px_11.7px] roboto bg-[#292929] rounded-[7.3px]">
-                        <div className="flex-center">{svg}</div>
-                        <p className="text-[12px] text-[#E4E4E4] font-medium leading-[104%]">{title}</p>
-                      </div>
-                    ))
-                  }
-                </div>
-                <Container>
-                  <Button onClick={() => {}} className="bg-pink rounded-[11px] p-[17.3px_26px] w-full active:scale-95 mt-[11px] mb-[38px]">
+
+          <div className="relative w-screen aspect-[302/500] pt-[20px] overflow-hidden rounded-[18px_18px_0px_0px] bg-main-bg">
+            <div className="z-[1] absolute top-[19px] px-[16px]">
+              <p className="text-[20px] leading-[100%] text-white">
+                Стильный букет в коробке, с ароматом, с подарочной открыткой, которую мы подпишем за вас бесплатно
+              </p>
+            </div>
+            <div className="absolute top-[-50px] left-0 w-full h-full">
+              <div className="relative w-full h-full">
+                <Image src={'/images/home/flowers-in-box/flowers-mobile.png'} alt="flowers" fill className="object-cover object-top"/>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute w-full bottom-[40px] z-10">
+              <div className="flex flex-col justify-between h-full roboto ">
+                <div className="px-[16px]">
+                  <Button onClick={() => {}} className="bg-pink rounded-[11px] p-[17.3px_26px] w-full active:scale-95 mt-[11px]">
                     <p className="text-[18.4px] font-bold">Посмотреть все цветы в коробках</p>
                   </Button>
-                </Container>
+                  <div className="mt-[38px] text-yellow text-[18px] flex flex-col gap-[7px]">
+                    <div className="flex gap-[7px]">
+                      <div className="w-fit p-[8.5px_12px] border-[2px] border-yellow rounded-[11px]">
+                        <p className="text-[100%]">Аромамасла</p>
+                      </div>
+                      <div className="w-fit p-[8.5px_12px] border-[2px] border-yellow rounded-[11px]">
+                        <p className="text-[100%]">Открытка</p>
+                      </div>
+                    </div>
+                    <div className="w-fit p-[8.5px_12px] border-[2px] border-yellow rounded-[11px]">
+                      <p className="text-[100%]">Фото перед отправкой</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ export const FullscreenLoopVideo: React.FC<Props> = ({
 }) => {
   return (
     <section
-      className={clsx("relative w-full sm:aspect-[1802/705] aspect-[402/620] overflow-hidden", className)}
+      className={clsx("relative w-full sm:aspect-[1802/705] aspect-[402/415] overflow-hidden", className)}
     >
       <video
         autoPlay

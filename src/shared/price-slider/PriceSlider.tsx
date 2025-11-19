@@ -24,8 +24,10 @@ export const PriceSlider = ({
     setMaxValue(maxVal)
   }
 
-  const getPositionPercent = (val: number) =>
-    ((val - minLimit) / (maxLimit - minLimit)) * 100
+  const getPositionPercent = (val: number) => {
+    const percent = ((val - minLimit) / (maxLimit - minLimit)) * 100
+    return percent - (percent / 80)
+  }
 
   return (
     <div className="w-full lg:mt-[40px] mt-[12px] mb-[29px] flex justify-center">
@@ -38,6 +40,7 @@ export const PriceSlider = ({
           sx={{
             color: '#f5f5f5',
             height: 4,
+            padding: '13px 0',
             '& .MuiSlider-track': {
               backgroundColor: '#f5f5f5',
             },
@@ -57,19 +60,21 @@ export const PriceSlider = ({
         />
 
         <div
-          className="absolute text-[15px] text-white"
+          className="absolute text-[15px] text-white whitespace-nowrap"
           style={{
-            left: `calc(${getPositionPercent(minValue)}% - 15px)`,
-            top: 30,
+            left: `calc(${getPositionPercent(minValue)}%)`,
+            top: 35,
+            transform: 'translateX(-50%)',
           }}
         >
           {minValue}
         </div>
         <div
-          className="absolute text-[15px] text-white"
+          className="absolute text-[15px] text-white whitespace-nowrap"
           style={{
-            left: `calc(${getPositionPercent(maxValue)}% - 15px)`,
-            top: 30,
+            left: `calc(${getPositionPercent(maxValue)}%)`,
+            top: 35,
+            transform: 'translateX(-50%)',
           }}
         >
           {maxValue}

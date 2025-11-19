@@ -10,38 +10,60 @@ export const HomePreview = () => {
   return (
     <main className="relative">
       <LgShow>
-        <div className="w-[100%] h-[720px] relative">
-          <img
-            src="/images/product-images/main.jpg"
-            alt="preview"
-            className="inset-0 w-full h-[680px] absolute object-cover object-center top-[-40px]"
-          />
+        <div className="mt-[-25px]">
+          <div className="relative">
+            <img
+              src="/images/product-images/main.jpg"
+              alt="preview"
+              className="w-full aspect-[766/950] object-cover object-center"
+            />
 
-          <div className="absolute w-full left-0 top-[300px] flex flex-col items-end px-[15px] roboto">
-            <div className="roboto-serif">
-              <p className="text-[#D9D9D9] text-[41px] font-semibold leading-[100%] line-through">35 000</p>
-            </div>
-            <div className="flex items-center justify-between w-full mt-[9.6px]">
-              <div className="flex items-center gap-[14px]">
-                <div className="border-black border-[1px] rounded-[10px] p-[9.5px_16px] bg-[#181818]">
-                  <p className="text-[#B3B3B3] text-[14px] font-semibold leading-[100%]">101 роза</p>
-                </div>
-                <div className="border-black border-[1px] rounded-[10px] p-[9.5px_16px] bg-[#181818]">
-                  <p className="text-[#B3B3B3] text-[14px] font-semibold leading-[100%]">XL</p>
+            <div className="absolute w-full bottom-0 px-[16px] flex justify-between items-center text-nowrap">
+              <div className="flex items-center justify-between w-full mt-[9.6px]">
+                <div className="flex items-center gap-[7px] text-[18px] font-medium text-yellow leading-[100%]">
+                  <div className="border-yellow border-[2px] rounded-[11px] p-[8.7px_16.8px]">
+                    <p className="">XL</p>
+                  </div>
+                  <div className="border-yellow border-[2px] rounded-[11px] p-[8.7px_16.8px]">
+                    <p className="">101 роза</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex items-center gap-[9px] h-[35px] roboto-serif">
-                <div className="bg-[#E2AFA0] w-[90px] h-full flex-center rounded-[7.6px]">
-                  <p className="text-[25px] font-semibold text-black">16 000</p>
+              <div className="flex flex-col items-end gap-[11px] roboto-serif text-white">
+                <p className="text-[41px] font-semibold leading-[100%] relative inline-block">
+                  <span className="relative">
+                    35 000
+                    <span className="absolute top-[60%] left-0 w-full h-[7px] bg-[#AC1111] rounded-full -rotate-[8deg] transform -translate-y-1/2"></span>
+                  </span>
+                </p>
+                <div className="flex items-center gap-[9px] h-[35px] r">
+                  <div className="bg-[#E3006B] w-[90px] h-full flex-center rounded-[7.6px]">
+                    <p className="text-[25px] font-semibold">16 000</p>
+                  </div>
                 </div>
               </div>
             </div>
-            <Button onClick={() => {}} className="bg-[#2E2E2E] rounded-[11px] p-[18px] active:scale-[0.98] w-full mt-[13.6px]">
-              <p className="text-[18px] text-yellow font-semibold leading-[100%]">Хочу узнать больше про букет ↑</p>
-            </Button>
           </div>
 
-          <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full z-10 absolute top-[500px]">
+          <Container className="text-white roboto-flex mt-[5px] ">
+            <p className="text-[32px] font-extrabold uppercase leading-[100%]">Премиальные <br/> букеты без наценки</p>
+            <p className="text-[16px] mt-[15px] leading-[100%]">
+              Каталог букетов предствлен в виде настроения. Выбирайте свою эмоцию, чтобы передать ее через букет. 
+            </p>
+            <Button onClick={() => {}} className="bg-[#E3006B] rounded-[11px] flex-center p-[17.3px] active:scale-[0.98] mt-[27px] roboto w-full">
+              <p className="text-[18.4px] leading-[100%] font-bold">Купить 101 розу</p>
+            </Button>
+            <p className="mt-[21px] text-[16px] leading-[100%] mb-[20px]">
+              Мы зарабатываем только на оформлении и премиум доставке (по желанию)
+            </p>
+            <Link href={'/'}>
+              <p className="leading-[104%] text-[16px] font-medium">
+                За что вы платите? <span className="underline">Посмотреть на примере →</span>
+              </p>
+            </Link>
+          </Container>
+
+          {/* <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full z-10 absolute top-[500px]">
             <div className="relative px-[16px]">
               <div className="absolute bottom-[-55px] h-[120px] left-0 w-full bg-secondary-bg z-[-1]"></div>
               <h2 className="text-[38px] font-black leading-[100%]">
@@ -58,8 +80,9 @@ export const HomePreview = () => {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
+
         {/* <div className="bg-secondary-bg w-full mt-[45px] pb-[4px]">
           <Container>
             <div className="roboto pt-[14px]">
