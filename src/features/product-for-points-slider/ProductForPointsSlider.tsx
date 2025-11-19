@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Button } from '@/shared/button/Button';
 import { useRef } from 'react';
 import { TextNowrap } from '@/shared/text/text-nowrap/TextNowrap';
+import { SmHidden } from '@/shared/wrappers/SizeHidden';
 
 const productList = [
   {
@@ -85,12 +86,12 @@ export const ProductForPointsSlider = () => {
         ref={swiperRef}
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
-        className='mt-[27px]'
+        className='mt-[27px] !sm:px-0 !px-[16px]'
         breakpoints={{
           1000: { slidesPerView: 4 },
           768: { slidesPerView: 3 },
           640: { slidesPerView: 2 },
-          0: { slidesPerView: 1 },
+          0: { slidesPerView: 1.4 },
         }}
       >
         {productList.map((item, index) => (
@@ -162,20 +163,22 @@ export const ProductForPointsSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Button onClick={() => swiperRef.current?.swiper.slidePrev()} className='absolute top-[50%] left-0 translate-y-[-50%] z-[1] active:scale-95 translate-x-[-50%]'>
-        <div style={{boxShadow: '0px 1px 2px 0px #1018280D'}} className="bg-[#D0D5DD] w-[36px] aspect-square flex-center rounded-full rotate-180">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="#344054" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      </Button>
-      <Button onClick={() => swiperRef.current?.swiper.slideNext()} className='absolute top-[50%] right-0 translate-y-[-50%] z-[1] active:scale-95 translate-x-[50%]'>
-        <div style={{boxShadow: '0px 1px 2px 0px #1018280D'}} className="bg-[#D0D5DD] w-[36px] aspect-square flex-center rounded-full">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.5 15L12.5 10L7.5 5" stroke="#344054" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-        </div>
-      </Button>
+      <SmHidden>
+        <Button onClick={() => swiperRef.current?.swiper.slidePrev()} className='absolute top-[50%] left-0 translate-y-[-50%] z-[1] active:scale-95 translate-x-[-50%]'>
+          <div style={{boxShadow: '0px 1px 2px 0px #1018280D'}} className="bg-[#D0D5DD] w-[36px] aspect-square flex-center rounded-full rotate-180">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="#344054" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </Button>
+        <Button onClick={() => swiperRef.current?.swiper.slideNext()} className='absolute top-[50%] right-0 translate-y-[-50%] z-[1] active:scale-95 translate-x-[50%]'>
+          <div style={{boxShadow: '0px 1px 2px 0px #1018280D'}} className="bg-[#D0D5DD] w-[36px] aspect-square flex-center rounded-full">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.5 15L12.5 10L7.5 5" stroke="#344054" strokeWidth="1.67" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
+        </Button>
+      </SmHidden>
     </div>
   );
 };

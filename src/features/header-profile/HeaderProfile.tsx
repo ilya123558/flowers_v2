@@ -136,7 +136,7 @@ export const HeaderProfile = () => {
                         duration: 0.4,
                         ease: "easeInOut",
                       }}
-                      className="absolute top-[99%] right-0 w-[265px] bg-black p-[16px_24px] rounded-[0px_0px_8px_8px] roboto z-50 shadow-lg"
+                      className="absolute top-[99%] right-0 w-[265px] bg-black p-[16px_24px] rounded-[20px_0px_0px_20px] roboto z-50 shadow-lg"
                     >
                       <ul className="flex flex-col gap-[24px]">
                         {navItems.map(({ link, title }, index) => (

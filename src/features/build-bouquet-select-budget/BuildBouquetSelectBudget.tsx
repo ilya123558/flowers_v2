@@ -67,13 +67,16 @@ export const BuildBouquetSelectBudget = () => {
         </div>
       </LgHidden>
       <LgShow>
-        <div className="flex flex-col gap-[16px] pl-[16px]">
-          <Title16px>
-            Каков ваш бюджет
-          </Title16px>
-          <Checkbox isChecked={includeServiceCost} setIsChecked={setIncludeServiceCost}>
-            <p className="text-[#8C8C8C]">Включить стоимость сервиса</p>
-          </Checkbox>
+        <div className="flex items-center gap-[47px] px-[36px]">
+          <div className="">
+            <Checkbox isChecked={includeServiceCost} setIsChecked={setIncludeServiceCost} className="!rounded-[8px] !w-[25px]"/>
+          </div>
+          <div className="flex flex-col gap-[7px] w-fit roboto">
+            <p className="text-[#D9D9D9] text-[16px] leading-[118%]">Включить стоимость сервиса </p>
+            <Button onClick={() => {}} className="p-[6px] w-full border-[1px] border-yellow rounded-[8px] active:scale-[0.98]">
+              <p className="text-yellow text-[14px] leading-[100%]">Что я оплачиваю?</p>
+            </Button>
+          </div>
         </div>
       </LgShow>
       <PriceSlider

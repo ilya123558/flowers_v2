@@ -22,11 +22,12 @@ export default function Home() {
       <HomePreview />
       <LgHidden>
         <div className="w-full bg-secondary-bg h-[170px] mt-[-220px]"></div>
+        <Catalog />
       </LgHidden>
-      <div className="sm:mt-[0px] mt-[40px]">
-        <Catalog isHidden />
-      </div>
       <LgShow>
+        <div className="mt-[40px] rounded-[16px_16px_0px_0px] overflow-hidden">
+          <Catalog />
+        </div>
         <div className="mt-[-1px] pt-[10px] bg-secondary-bg">
           <div className="px-[16px] bg-secondary-bg mb-[-1px] h-[100px]">
             <Button onClick={() => router.push('/catalog')} className="bg-pink p-[17.3px_26px] rounded-[11px] active:scale-95 mt-[18px] w-full">
@@ -35,7 +36,7 @@ export default function Home() {
           </div>
         </div>
       </LgShow>
-      <ProductServiceInfoBlock />
+      {/* <ProductServiceInfoBlock /> */}
       {/* <LgShow>
         <div className="w-full h-[230px] bg-secondary-bg">
           <Container>
@@ -47,8 +48,8 @@ export default function Home() {
       <HomeLoopVideoBlock />
       <HomeFlowersInBox />
       <HomeReview />
-      <FAQ />
       <HomeEventsInfo />
+      <FAQ />
       <HomeInfo />
     </section>
   );

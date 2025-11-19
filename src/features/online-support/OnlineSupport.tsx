@@ -4,11 +4,11 @@ import { SocialButton } from "@/shared/social-button/SocialButton";
 
 export const OnlineSupport = () => {
   const handleWhatsappClick = () => {
-    window.open('https://wa.me/79280000000', '_blank');
+    // window.open('https://wa.me/79280000000', '_blank');
   };
 
   const handleTelegramClick = () => {
-    window.open('https://t.me/yourusername', '_blank');
+    // window.open('https://t.me/yourusername', '_blank');
   };
 
   return (
