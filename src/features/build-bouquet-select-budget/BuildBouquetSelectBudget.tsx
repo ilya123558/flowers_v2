@@ -9,6 +9,7 @@ import { LgHidden } from "@/shared/wrappers/SizeHidden";
 import { LgShow } from "@/shared/wrappers/SizeShow";
 import Image from "next/image";
 import { useState } from "react";
+import { ProductServiceInfoModal } from "../product-service-info-modal/ProductServiceInfoModal";
 
 const list = [
   {
@@ -50,12 +51,14 @@ const list = [
 ]
 
 export const BuildBouquetSelectBudget = () => {
+  const [productServiceInfoIsOpen, setProductServiceInfoIsOpen] = useState(false)
   const [includeServiceCost, setIncludeServiceCost] = useState(false)
   const [minValue, setMinValue] = useState(3000)
   const [maxValue, setMaxValue] = useState(8000)
 
   return (
     <div className="">
+      <ProductServiceInfoModal isOpen={productServiceInfoIsOpen} setIsOpen={setProductServiceInfoIsOpen} />
       <LgHidden>
         <div className="flex justify-between items-center">
           <Title23px>
@@ -73,7 +76,7 @@ export const BuildBouquetSelectBudget = () => {
           </div>
           <div className="flex flex-col gap-[7px] w-fit roboto">
             <p className="text-[#D9D9D9] text-[16px] leading-[118%]">Включить стоимость сервиса </p>
-            <Button onClick={() => {}} className="p-[6px] w-full border-[1px] border-yellow rounded-[8px] active:scale-[0.98]">
+            <Button onClick={() => setProductServiceInfoIsOpen(true)} className="p-[6px] w-full border-[1px] border-yellow rounded-[8px] active:scale-[0.98]">
               <p className="text-yellow text-[14px] leading-[100%]">Что я оплачиваю?</p>
             </Button>
           </div>

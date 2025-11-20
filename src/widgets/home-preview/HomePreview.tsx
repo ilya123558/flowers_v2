@@ -1,14 +1,19 @@
 'use client'
+import { ProductServiceInfoModal } from "@/features/product-service-info-modal/ProductServiceInfoModal";
 import { Button } from "@/shared/button/Button";
 import { Container } from "@/shared/container/Container";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
 import { LgShow } from "@/shared/wrappers/SizeShow";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export const HomePreview = () => {
+  const [productServiceInfoIsOpen, setProductServiceInfoIsOpen] = useState(false)
+
   return (
     <main className="relative">
+      <ProductServiceInfoModal isOpen={productServiceInfoIsOpen} setIsOpen={setProductServiceInfoIsOpen} />
       <LgShow>
         <div className="mt-[-25px]">
           <div className="relative">
@@ -56,11 +61,11 @@ export const HomePreview = () => {
             <p className="mt-[21px] text-[16px] leading-[100%] mb-[20px]">
               Мы зарабатываем только на оформлении и премиум доставке (по желанию)
             </p>
-            <Link href={'/'}>
+            <Button onClick={() => setProductServiceInfoIsOpen(true)}>
               <p className="leading-[104%] text-[16px] font-medium">
                 За что вы платите? <span className="underline">Посмотреть на примере →</span>
               </p>
-            </Link>
+            </Button>
           </Container>
 
           {/* <div style={{background: 'linear-gradient(to top, rgba(0, 0, 0, 1) 20.65%, rgba(0, 0, 0, 0.5) 70%, rgba(0, 0, 0, 0) 100%)'}} className="w-full z-10 absolute top-[500px]">

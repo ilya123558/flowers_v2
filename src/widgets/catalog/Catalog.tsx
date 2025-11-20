@@ -3,6 +3,7 @@ import { BuildBouquetSelectBudget } from "@/features/build-bouquet-select-budget
 import { BuildBouquetSelectTag } from "@/features/build-bouquet-select-tag/BuildBouquetSelectTag";
 import { BuildBouquetSelectType } from "@/features/build-bouquet-select-type/BuildBouquetSelectType";
 import { ProductCatalog } from "@/features/product-catalog/ProductCatalog";
+import { ProductServiceInfoModal } from "@/features/product-service-info-modal/ProductServiceInfoModal";
 import { Button } from "@/shared/button/Button";
 import { Container } from "@/shared/container/Container";
 import { Title23px } from "@/shared/text/title23px/Title23px";

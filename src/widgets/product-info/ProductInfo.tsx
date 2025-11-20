@@ -12,40 +12,44 @@ import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
 import { SmHidden } from "@/shared/wrappers/SizeHidden";
 import { SmShow } from "@/shared/wrappers/SizeShow";
 import { emotionsList } from "@/utils/const/main";
-import { incCount, useAppDispatch } from "@/views/store";
+import {
+  incCount,
+  useAppDispatch,
+  useAppSelector,
+  setActiveImageIndex,
+  setIsOpenProductTagModal,
+  setActiveSizeIndex,
+  setIsOpenProductSizeModal,
+  setIsOpenProductServiceInfoModal
+} from "@/views/store";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
 import clsx from "clsx";
 
-interface FlowerItem {
-  title: string;
-  src: string;
-}
-
-interface ProductInfoProps {
-  activeIndex: number;
-  setActiveIndex: (index: number) => void;
-  imageList: string[];
-  flowersList: FlowerItem[];
-  isOpenProductTagModal: boolean;
-  setIsOpenProductTagModal: (isOpen: boolean) => void;
-}
-
-export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersList, isOpenProductTagModal, setIsOpenProductTagModal }: ProductInfoProps) => {
+export const ProductInfo = () => {
   const dispatch = useAppDispatch()
+  const {
+    currentProduct,
+    activeImageIndex,
+    isOpenProductTagModal,
+    activeSizeIndex,
+    isOpenProductSizeModal,
+    isOpenProductServiceInfoModal
+  } = useAppSelector(state => state.product)
   const swiperRef = useRef<SwiperRef>(null)
-  const [activeSizeIndex, setActiveSizeIndex] = useState(0)
-  const [isOpenProductSizeModal, setIsOpenProductSizeModal] = useState(false)
-  const [isOpenProductServiceInfoModal, setIsOpenProductServiceInfoModal] = useState(false)
+
+  if (!currentProduct) return null
+
+  const { imageList, flowersList } = currentProduct
   
   return (
     <div className="sm:col-span-7">
+      <ProductSizeModal isOpen={isOpenProductSizeModal} setIsOpen={(isOpen: boolean) => dispatch(setIsOpenProductSizeModal(isOpen))} />
+      <ProductTagModal isOpen={isOpenProductTagModal} setIsOpen={(isOpen: boolean) => dispatch(setIsOpenProductTagModal(isOpen))} />
       <SmHidden>
         <div className="w-full">
-          <ProductSizeModal isOpen={isOpenProductSizeModal} setIsOpen={setIsOpenProductSizeModal} />
-          <ProductTagModal isOpen={isOpenProductTagModal} setIsOpen={setIsOpenProductTagModal} />
-          <ProductServiceInfoModal isOpen={isOpenProductServiceInfoModal} setIsOpen={setIsOpenProductServiceInfoModal} />
+          <ProductServiceInfoModal isOpen={isOpenProductServiceInfoModal} setIsOpen={(isOpen: boolean) => dispatch(setIsOpenProductServiceInfoModal(isOpen))} />
           <div className="flex justify-between items-center">
             <h4 className="text-[28px] font-bold">Солнечный день</h4>
             <div className="h-[34px] flex items-center gap-[13px]">
@@ -85,7 +89,7 @@ export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersLis
                 if(index === arr.length - 1) {
                   return (
                     <li key={index}>
-                      <Button onClick={() => setIsOpenProductTagModal(true)} className="active:scale-95 h-full">
+                      <Button onClick={() => dispatch(setIsOpenProductTagModal(true))} className="active:scale-95 h-full">
                         <BoxWrapper className="p-[5.5px_10px] w-fit flex gap-[4px] items-center h-full">
                           <p className="text-title-gray text-[14px] font-semibold text-nowrap">...</p>
                         </BoxWrapper>
@@ -100,7 +104,7 @@ export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersLis
               
               return (
                 <li key={index}>
-                  <Button onClick={() => setIsOpenProductTagModal(true)} className="active:scale-95 h-full">
+                  <Button onClick={() => dispatch(setIsOpenProductTagModal(true))} className="active:scale-95 h-full">
                     <BoxWrapper className="p-[5.5px_10px] w-fit flex gap-[4px] items-center">
                       <div className="relative w-[32px] aspect-square">
                         <Image src={src} alt="flower" fill />
@@ -115,16 +119,16 @@ export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersLis
           <div className="w-full bg-box-gray h-[1px] mt-[24px]"></div>
           <div className="flex justify-between">
             <Title16px className="mt-[16px]">Выберите размер:</Title16px>
-            <Button onClick={() => setIsOpenProductSizeModal(true)}>
+            <Button onClick={() => dispatch(setIsOpenProductSizeModal(true))}>
               <Title16px className="mt-[16px] underline">Оценить размер</Title16px>
             </Button>
           </div>
-          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex}/>
+          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={(index: number) => dispatch(setActiveSizeIndex(index))}/>
           <div className="w-full bg-box-gray h-[1px] mt-[24px]"></div>
           <div className="mt-[24px] flex sm:flex-row flex-col gap-[20px] sm:items-center">
             <div className="flex gap-[20px] items-center">
               <h5 className="text-[34px] font-semibold">2 390 ₽</h5>
-              <Button onClick={() => setIsOpenProductServiceInfoModal(true)} className="flex-center gap-[5px] w-fit active:scale-95">
+              <Button onClick={() => dispatch(setIsOpenProductServiceInfoModal(true))} className="flex-center gap-[5px] w-fit active:scale-95">
                 <p className="text-[14px] font-medium">+ 1 900 ₽ за сервис</p>
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M7 0C3.13438 0 0 3.13438 0 7C0 10.8656 3.13438 14 7 14C10.8656 14 14 10.8656 14 7C14 3.13438 10.8656 0 7 0ZM7.5 10.375C7.5 10.4438 7.44375 10.5 7.375 10.5H6.625C6.55625 10.5 6.5 10.4438 6.5 10.375V6.125C6.5 6.05625 6.55625 6 6.625 6H7.375C7.44375 6 7.5 6.05625 7.5 6.125V10.375ZM7 5C6.80374 4.99599 6.61687 4.91522 6.47948 4.775C6.3421 4.63478 6.26515 4.4463 6.26515 4.25C6.26515 4.0537 6.3421 3.86522 6.47948 3.725C6.61687 3.58478 6.80374 3.50401 7 3.5C7.19626 3.50401 7.38313 3.58478 7.52052 3.725C7.6579 3.86522 7.73485 4.0537 7.73485 4.25C7.73485 4.4463 7.6579 4.63478 7.52052 4.775C7.38313 4.91522 7.19626 4.99599 7 5Z" fill="#8C8C8C"/>
@@ -168,62 +172,38 @@ export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersLis
         </div>
       </SmHidden>
       <SmShow>
-        <ProductTagModal isOpen={isOpenProductTagModal} setIsOpen={setIsOpenProductTagModal} />
-        <div className="flex justify-between">
-          <h4 className="text-[28px] font-bold w-[50%] leading-[100%]">Солнечный день</h4>
-          <div className="roboto">
-            <div className="flex gap-[8px] h-[32px]">
-              <div className="bg-[#181818] p-[7px_8px] top-[9px] left-[8px] rounded-[9px] flex-center gap-[4px]">
-                <div className="relative w-[16px] aspect-square">
-                  <img src="/images/product/coins.png" alt="points" className="w-full h-full object-contain"/>
-                </div>
-                <p className="text-[#B3B3B3] text-[14px]">135</p>
-              </div>
-              <Button onClick={() => {}} className="h-full active:scale-95 roboto-flex">
-                <BoxWrapper className="h-full p-[0px_10px] !bg-[#252525]">
-                  <div className="flex items-center gap-[7px] h-full">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M17.5 6.875C17.5 4.80417 15.7508 3.125 13.5933 3.125C11.9808 3.125 10.5958 4.06333 10 5.4025C9.40417 4.06333 8.01917 3.125 6.40583 3.125C4.25 3.125 2.5 4.80417 2.5 6.875C2.5 12.8917 10 16.875 10 16.875C10 16.875 17.5 12.8917 17.5 6.875Z" stroke="#D46F77" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                    <p className="text-red">109</p>
-                  </div>
-                </BoxWrapper>
-              </Button>
-            </div>
-            <p className="text-end mt-[8px] text-[34px] text-white font-semibold leading-[100%]">2 390</p>
-          </div>
+        <ProductTagModal isOpen={isOpenProductTagModal} setIsOpen={(isOpen: boolean) => dispatch(setIsOpenProductTagModal(isOpen))} />
+        <div className="">
+          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={(index: number) => dispatch(setActiveSizeIndex(index))}/>
         </div>
-        <div className="mt-[15px] flex justify-between">
-          <Button onClick={() => setIsOpenProductServiceInfoModal(true)} className="flex-center gap-[5px] w-fit active:scale-95">
+        <div className="mt-[23px] flex justify-between">
+          <Button onClick={() => dispatch(setIsOpenProductServiceInfoModal(true))} className="flex-center gap-[5px] w-fit active:scale-95">
             <p className="text-[16px] font-medium text-[#B9BBBF]">+ 1 900 ₽ за сервис</p>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7 0C3.13438 0 0 3.13438 0 7C0 10.8656 3.13438 14 7 14C10.8656 14 14 10.8656 14 7C14 3.13438 10.8656 0 7 0ZM7.5 10.375C7.5 10.4438 7.44375 10.5 7.375 10.5H6.625C6.55625 10.5 6.5 10.4438 6.5 10.375V6.125C6.5 6.05625 6.55625 6 6.625 6H7.375C7.44375 6 7.5 6.05625 7.5 6.125V10.375ZM7 5C6.80374 4.99599 6.61687 4.91522 6.47948 4.775C6.3421 4.63478 6.26515 4.4463 6.26515 4.25C6.26515 4.0537 6.3421 3.86522 6.47948 3.725C6.61687 3.58478 6.80374 3.50401 7 3.5C7.19626 3.50401 7.38313 3.58478 7.52052 3.725C7.6579 3.86522 7.73485 4.0537 7.73485 4.25C7.73485 4.4463 7.6579 4.63478 7.52052 4.775C7.38313 4.91522 7.19626 4.99599 7 5Z" fill="#8C8C8C"/>
             </svg>
           </Button>
 
-          <Button onClick={() => setIsOpenProductSizeModal(true)}>
+          <Button onClick={() => dispatch(setIsOpenProductSizeModal(true))}>
             <Title16px className="underline">Оценить размер</Title16px>
           </Button>
         </div>
-        <div className="mt-[25px]">
-          <SelectSize activeSizeIndex={activeSizeIndex} setActiveSizeIndex={setActiveSizeIndex}/>
-        </div>
-        <div className="relative flex-center mt-[36px] w-full">
+        <div className="relative flex-center mt-[23px] w-full">
           <Swiper
             ref={swiperRef}
             spaceBetween={8}
             slidesPerView={3.5}
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
-            className="w-full px-[16px]"
+            className="w-full "
           >
             {imageList.map((src, index) => (
               <SwiperSlide key={index}>
-                <Button 
-                  onClick={() => setActiveIndex(index)} 
+                <Button
+                  onClick={() => dispatch(setActiveImageIndex(index))}
                   className={clsx(
-                    "aspect-[105/89] relative w-full rounded-[14px] !transition-none overflow-hidden border-[#3a4980] flex items-center justify-center", 
-                    activeIndex === index ? 'border-[3px]' : 'border-[0px]'
+                    "aspect-[105/89] relative w-full rounded-[14px] !transition-none overflow-hidden border-[#3a4980] flex items-center justify-center",
+                    activeImageIndex === index ? 'border-[3px]' : 'border-[0px]'
                   )}
                 >
                   <img src={src} alt="product-img" className="object-cover object-center w-full h-full" />
@@ -232,10 +212,10 @@ export const ProductInfo = ({ activeIndex, setActiveIndex, imageList, flowersLis
             ))}
           </Swiper>
         </div>
-        <p className="text-[#B9BBBF] text-[16px] leading-[100%] mt-[18px]">
+        <p className="text-[#B9BBBF] text-[16px] leading-[100%] mt-[31px]">
           Прелестный букет из розовых роз, изящных тюльпанов и свежей зелени подарит весеннее настроение и станет тонким знаком нежных чувств и искреннего восхищения.
         </p>
-        <div className="flex items-center gap-[16px] sm:h-[71px] h-[50px] mt-[24px]">
+        <div className="flex items-center gap-[16px] sm:h-[71px] h-[50px] mt-[41px]">
           <Button onClick={() => {}} className="bg-yellow flex-center gap-[8px] h-full sm:p-[0px_26px] p-[0px_12px] rounded-[11px] active:scale-95 sm:w-fit w-full">
             <div className="relative w-[21px] aspect-square">
               <Image src={'/images/product/lightning.png'} alt="lightning" fill />

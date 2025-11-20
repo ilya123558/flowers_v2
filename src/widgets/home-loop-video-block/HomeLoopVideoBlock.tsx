@@ -1,11 +1,11 @@
 'use client'
-import { BasketButton } from "@/shared/button/BasketButton";
+import { DeliveryCardsSlider } from "@/features/delivery-cards-slider/DeliveryCardsSlider";
 import { Button } from "@/shared/button/Button";
 import { Container } from "@/shared/container/Container";
 import { FullscreenLoopVideo } from "@/shared/fullscreen-loop-video/FullscreenLoopVideo";
 import { BoxWrapper } from "@/shared/wrappers/BoxWrapper";
-import { LgHidden, SmHidden } from "@/shared/wrappers/SizeHidden";
-import { LgShow, SmShow } from "@/shared/wrappers/SizeShow";
+import { SmHidden } from "@/shared/wrappers/SizeHidden";
+import { SmShow } from "@/shared/wrappers/SizeShow";
 import { incCount, useAppDispatch } from "@/views/store";
 import Image from "next/image";
 
@@ -70,23 +70,7 @@ export const HomeLoopVideoBlock = () => {
             <p className="text-[#B7B7B7] leading-[100%] font-medium text-[16px] mt-[20px]">На выбор можем доставить“Яндекс” от 120 рублей. </p>
           </div>
           <div className="relative h-[145px]">
-            <div className="absolute left-0 top-[26px] w-full z-10">
-              <div className="flex gap-[25px] overflow-x-auto px-[16px] scrollbar-hide">
-                {list.map(({imgSrc, text, title}, index) => (
-                  <BoxWrapper key={index} className="w-fit max-w-[271px] flex-shrink-0 p-[20px] !bg-[#2B2B2BE5]">
-                    <div className="w-[40px] aspect-square relative">
-                      <Image src={imgSrc} quality={100} alt="icon" fill />
-                    </div>
-                    <div className="roboto-serif">
-                      <p className="mt-[16px] text-[#DDDDDD]"><span className="text-[22px] font-extrabold">{title}</span></p>
-                    </div>
-                    <div className="roboto">
-                      <p className="mt-[16px] text-[16px] text-[#B7B7B7]">{text}</p>
-                    </div>
-                  </BoxWrapper>
-                ))}
-              </div>
-            </div>
+            <DeliveryCardsSlider />
           </div>
           <div className="relative overflow-hidden rounded-[0px_0px_18px_18px]">
             <FullscreenLoopVideo srcMp4="/images/home/video-block/flowers-movie.mp4" />
