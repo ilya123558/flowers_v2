@@ -33,7 +33,7 @@ export default function RootLayout({
               {children}
             </div>
             <Footer />
-            <OnlineSupport />
+            <OnlineSupport hiddenPage="product"/>
           </body>
         </InitWrapper>
       </ProviderWrapper>
