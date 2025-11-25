@@ -6,6 +6,7 @@ import { Header } from "@/widgets/header/Header";
 import { Footer } from "@/widgets/footer/Footer";
 import { InitWrapper } from "@/shared/wrappers/InitWrapper";
 import { OnlineSupport } from "@/features/online-support/OnlineSupport";
+import { MobileMenu } from "@/widgets/mobile-menu/MobileMenu";
 
 // if add next js font 
 // import { Inter } from "next/font/google";
@@ -24,9 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <ProviderWrapper>
-        <InitWrapper>
-          <body className="bg-main-bg text-main">
+      <body className="bg-main-bg text-main">
+        <ProviderWrapper>
+          <InitWrapper>
             <Header />
             <Basket />
             <div className="">
@@ -34,9 +35,10 @@ export default function RootLayout({
             </div>
             <Footer />
             <OnlineSupport hiddenPage="product"/>
-          </body>
-        </InitWrapper>
-      </ProviderWrapper>
+            <MobileMenu />
+          </InitWrapper>
+        </ProviderWrapper>
+      </body>
     </html>
   );
 }

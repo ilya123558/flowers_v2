@@ -62,7 +62,7 @@ export const ProductCatalog = () => {
       </SmHidden>
       <SmShow>
         <p className="text-[17px] font-bold pl-[16px]">Найдено 52</p>
-        <div className="mt-[16px] flex gap-[16px] overflow-x-scroll px-[16px]">
+        <div className="mt-[16px] grid grid-cols-2 gap-[16px] overflow-x-scroll px-[16px]">
           {productList.map((product, index) => (
             <Card key={index} {...product}/>
           ))}

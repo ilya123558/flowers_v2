@@ -1,4 +1,5 @@
 'use client'
+import { useMe } from "@/api";
 import { Button } from "@/shared/button/Button";
 import { Container } from "@/shared/container/Container";
 import { InputPhone } from "@/shared/input/InputPhone";
@@ -14,6 +15,7 @@ type IStateData = {
 }[]
 
 export const ProfilePersonalData = () => {
+  const { data: user } = useMe()
   const [data, setData] = useState<IStateData>([
     {socialTitle: 'Telegram', contactValue: ''}
   ])
@@ -42,6 +44,23 @@ export const ProfilePersonalData = () => {
   return (
     <Container>
       <div className="mt-[16px] w-full lg:p-[24px] p-[12px] rounded-[8px] bg-[#212121] roboto">
+        <div className="flex items-center gap-[16px] mb-[24px]">
+          <div className="relative min-w-[80px] h-[80px] overflow-hidden rounded-full">
+            <img
+              src={user?.photo_url || '/images/main/user-img.png'}
+              alt="user-avatar"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          </div>
+          <div className="flex flex-col justify-center">
+            <p className="text-[20px] font-semibold text-[#D9D9D9]">
+              {user?.first_name} {user?.last_name}
+            </p>
+            {user?.phone && (
+              <p className="text-[14px] text-[#8C8C8C] mt-[4px]">{user.phone}</p>
+            )}
+          </div>
+        </div>
         <p className="leading-[151%] text-[16px] font-medium text-[#D9D9D9]">Как с вами связаться</p>
         <p className="leading-[151%] sm:text-[16px] text-[14px] text-[#8C8C8C] mt-[8px]">
           Мы будем присылать фото и отчёты о доставке прямо сюда, чтобы вы могли видеть каждый букет.

@@ -6,7 +6,7 @@ import { myActiveSubscriptionList, myUnactiveSubscriptionList } from "@/utils/co
 export const ProfileSubscriptions = () => {
   return (
     <Container>
-      <div className="flex flex-col gap-[40px] mt-[16px]">
+      <div className="flex flex-col gap-[40px] !sm:mt-[-16px] !mt-[16px]">
         <ProfileSubscriptionsList 
           list={myActiveSubscriptionList} 
           title={`Активные (${myActiveSubscriptionList.length})`}

@@ -50,7 +50,7 @@ export const HomeLoopVideoBlock = () => {
         </div>
       </SmHidden>
       <SmShow>
-        <div className="relative bg-secondary-bg mt-[-2px]">
+        <div className="relative bg-secondary-bg pt-[47px]">
           {/* <div 
             style={{background: 'linear-gradient(0deg, rgba(115, 115, 115, 0) 1%, rgba(34, 20, 3, 0.8) 60%)'}}
             className="absolute top-0 w-full left-0 h-[500px] z-10"

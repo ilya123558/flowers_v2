@@ -1,4 +1,5 @@
 'use client'
+import { useMe } from "@/api"
 import { Button } from "@/shared/button/Button";
 import { LgHidden } from "@/shared/wrappers/SizeHidden";
 import { LgShow } from "@/shared/wrappers/SizeShow";
@@ -10,12 +11,14 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LoginModal } from "@/features/login-modal/LoginModal";
 
+
 export const HeaderProfile = () => {
   const basketCount = useAppSelector(state => state.basket.count)
-  const isAuth = true
+  const { data: user } = useMe()
+  const isAuth = !!user
   const userData = {
-    name: 'Лиля',
-    img_url: '/images/main/user-img.png',
+    name: user?.first_name || 'Гость',
+    img_url: user?.photo_url || '/images/main/user-img.png',
   }
 
   const router = useRouter()

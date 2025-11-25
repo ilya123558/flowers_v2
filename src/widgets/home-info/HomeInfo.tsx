@@ -9,7 +9,7 @@ export const HomeInfo = () => {
   return (
     <div className="">
       <LgHidden>
-        <div className="mt-[170px]">
+        <div className="mt-[42px]">
           <Container>
             <p className="text-[#EBEBEB] text-[35px]">Мы не просто привозим букеты —</p>
             <Title55px className="mt-[32px]">Мы помогаем передать эмоции красиво</Title55px>

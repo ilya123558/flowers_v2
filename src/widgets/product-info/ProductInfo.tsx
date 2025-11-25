@@ -215,14 +215,14 @@ export const ProductInfo = () => {
         <p className="text-[#B9BBBF] text-[16px] leading-[100%] mt-[31px]">
           Прелестный букет из розовых роз, изящных тюльпанов и свежей зелени подарит весеннее настроение и станет тонким знаком нежных чувств и искреннего восхищения.
         </p>
-        <div className="flex items-center gap-[16px] sm:h-[71px] h-[50px] mt-[41px]">
-          <Button onClick={() => {}} className="bg-yellow flex-center gap-[8px] h-full sm:p-[0px_26px] p-[0px_12px] rounded-[11px] active:scale-95 sm:w-fit w-full">
-            <div className="relative w-[21px] aspect-square">
+        <div className="flex items-center gap-[16px] h-[71px] mt-[41px]">
+          <Button onClick={() => {}} className="bg-[#E3006B] flex-center gap-[8px] h-full sm:p-[0px_26px] p-[0px_12px] rounded-[11px] active:scale-95 sm:w-fit w-full">
+            {/* <div className="relative w-[21px] aspect-square">
               <Image src={'/images/product/lightning.png'} alt="lightning" fill />
-            </div>
-            <p className="text-black font-bold sm:text-[20px] text-[16px] text-nowrap">Купить сейчас</p>
+            </div> */}
+            <p className="text-white font-bold sm:text-[20px] text-[16px] text-nowrap">Купить сейчас</p>
           </Button>
-          <BasketButton handleClick={() => dispatch(incCount())} withBorder className="sm:w-fit w-full"/>
+          <BasketButton handleClick={() => dispatch(incCount())} withBorder className="sm:w-fit w-full bg-[#252525]"/>
         </div>
         <AdditionaServices />
       </SmShow>

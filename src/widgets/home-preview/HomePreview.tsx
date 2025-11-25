@@ -132,30 +132,36 @@ export const HomePreview = () => {
         </div> */}
       </LgShow>
       <LgHidden>
-        <div className="w-full flex">
-          <div className="w-[50%] translate-y-[-130px] z-[-1] pl-[0px]">
+        <div className="w-full flex relative h-[110vh]">
+          <div className="w-full absolute left-0 top-[-40px] z-[-1]">
             <img
               src="/images/home/preview.png"
               alt="preview"
-              className="max-h-[1158px] max-w-[800px] w-full h-auto"
+              className="h-[90vh] aspect-[1000/800] object-cover"
             />
           </div>
-          <div className="w-[50%] mt-[157px]">
-            <p className="text-yellow uppercase tracking-[3px] text-[12px] roboto"><span>ЮЖНО - САХАЛИНСК</span></p>
-            <h2 className="text-[59px] font-black leading-[100%]">
-              Премиальные <br/>
-              букеты по <br/>
-              себестоимости
-            </h2>
-            <div className="mt-[59px] max-w-[310px]">
-              <Button className="rounded-[10.8px] bg-pink p-[17.3px_26px] active:scale-95 roboto" onClick={() => {}}>
-                <p className="text-[18px] font-bold">Найти свой идеальный букет</p>
-              </Button>
-              <p className="mt-[8px] text-[15px] text-center">В 2 раза выгоднее, чем в обычных <br/> цветочных магазинах</p>
-            </div>
+          <div className="absolute top-0 left-0 w-full">
+            <Container>
+              <div className="flex justify-end w-full">
+                <div className="w-[50%] mt-[100px]">
+                  <p className="text-yellow uppercase tracking-[3px] text-[12px] roboto"><span>ЮЖНО - САХАЛИНСК</span></p>
+                  <h2 className="text-[59px] font-black leading-[100%]">
+                    Премиальные <br/>
+                    букеты по <br/>
+                    себестоимости
+                  </h2>
+                  <div className="mt-[59px] max-w-[310px]">
+                    <Button className="rounded-[10.8px] bg-pink p-[17.3px_26px] active:scale-95 roboto" onClick={() => {}}>
+                      <p className="text-[18px] font-bold">Найти свой идеальный букет</p>
+                    </Button>
+                    <p className="mt-[8px] text-[15px] text-center">В 2 раза выгоднее, чем в обычных <br/> цветочных магазинах</p>
+                  </div>
+                </div>
+              </div>
+            </Container>
           </div>
         </div>
-        <div className="absolute w-full bottom-[120px]">
+        <div className="absolute w-full bottom-[150px]">
           <Container>
             <div className="w-full h-[228px] border-[1px] border-border-gray bg-[#000000CC] rounded-[19px] border-dashed relative px-[43px] flex justify-between gap-[38px]">
               <div className="relative h-full w-[395px]">

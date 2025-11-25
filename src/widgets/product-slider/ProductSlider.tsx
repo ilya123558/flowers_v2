@@ -24,7 +24,7 @@ export const ProductSlider = () => {
     <div className="col-span-5 select-none sm:mt-[0px] mt-[-80px]">
       <div className="w-full aspect-[494/574] relative sm:border-[1px] border-[#414141] overflow-hidden sm:rounded-[17px] rounded-[0px_0px_16px_16px]">
         <SmShow>
-          <div className="absolute top-0 pt-[83px] pb-[20px] left-0 w-full h-full flex flex-col justify-between">
+          <div className="absolute top-0 pt-[83px] pb-[11px] left-0 w-full h-full flex flex-col justify-between">
             <ul className="mt-[11px] flex gap-[8px] overflow-x-scroll px-[16px]">
               {flowersList.map(({title, src}, index, arr) => {
                 if(arr.length > 4 && index > 3) {
@@ -59,7 +59,13 @@ export const ProductSlider = () => {
               })}
             </ul>
             <div className="">
-              <div className="px-[16px] flex justify-between items-center">
+              <div className="flex justify-between px-[16px] items-center">
+                <h4 className="text-[28px] font-bold w-[50%] leading-[100%]">Солнечный день</h4>
+                <div className="roboto">
+                  <p className="text-end text-[34px] text-white font-semibold leading-[100%] underline underline-offset-4">2 390</p>
+                </div>
+              </div>
+              <div className="px-[16px] flex justify-between items-center mt-[20px]">
                 <Button onClick={() => {}} className="p-[8px_12px] flex gap-[6px] items-center bg-[#181818] rounded-[10px] active:scale-95 w-fit h-fit">
                   <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5 5.25C5 5.31631 4.97366 5.37989 4.92678 5.42678C4.87989 5.47366 4.8163 5.5 4.75 5.5C4.6837 5.5 4.62011 5.47366 4.57322 5.42678C4.52634 5.37989 4.5 5.31631 4.5 5.25C4.5 5.1837 4.52634 5.12011 4.57322 5.07322C4.62011 5.02634 4.6837 5 4.75 5C4.8163 5 4.87989 5.02634 4.92678 5.07322C4.97366 5.12011 5 5.1837 5 5.25ZM5 5.25H4.75M7.5 5.25C7.5 5.31631 7.47366 5.37989 7.42678 5.42678C7.37989 5.47366 7.3163 5.5 7.25 5.5C7.1837 5.5 7.12011 5.47366 7.07322 5.42678C7.02634 5.37989 7 5.31631 7 5.25C7 5.1837 7.02634 5.12011 7.07322 5.07322C7.12011 5.02634 7.1837 5 7.25 5C7.3163 5 7.37989 5.02634 7.42678 5.07322C7.47366 5.12011 7.5 5.1837 7.5 5.25ZM7.5 5.25H7.25M10 5.25C10 5.31631 9.97366 5.37989 9.92678 5.42678C9.87989 5.47366 9.8163 5.5 9.75 5.5C9.6837 5.5 9.62011 5.47366 9.57322 5.42678C9.52634 5.37989 9.5 5.31631 9.5 5.25C9.5 5.1837 9.52634 5.12011 9.57322 5.07322C9.62011 5.02634 9.6837 5 9.75 5C9.8163 5 9.87989 5.02634 9.92678 5.07322C9.97366 5.12011 10 5.1837 10 5.25ZM10 5.25H9.75M0.75 7.25667C0.75 8.32333 1.49867 9.25267 2.55467 9.408C3.27933 9.51467 4.01133 9.59667 4.75 9.654V12.75L7.53933 9.96133C7.67744 9.82377 7.86312 9.74453 8.058 9.74C9.35908 9.70799 10.657 9.59712 11.9447 9.408C13.0013 9.25267 13.75 8.324 13.75 7.256V3.244C13.75 2.176 13.0013 1.24733 11.9453 1.092C10.3906 0.863811 8.82135 0.749507 7.25 0.750002C5.65533 0.750002 4.08733 0.866668 2.55467 1.092C1.49867 1.24733 0.75 2.17667 0.75 3.244V7.256V7.25667Z" stroke="#B3B3B3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -83,12 +89,6 @@ export const ProductSlider = () => {
                       </div>
                     </BoxWrapper>
                   </Button>
-                </div>
-              </div>
-              <div className="flex justify-between px-[16px] mt-[10px] items-center">
-                <h4 className="text-[28px] font-bold w-[50%] leading-[100%]">Солнечный день</h4>
-                <div className="roboto">
-                  <p className="text-end text-[34px] text-white font-semibold leading-[100%] underline underline-offset-4">2 390</p>
                 </div>
               </div>
             </div>

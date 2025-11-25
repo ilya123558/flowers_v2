@@ -15,12 +15,13 @@ import { useScrollStarted } from "@/utils/hooks/useScrollStarted";
 import { TClassName } from "@/utils/types/main";
 import clsx from "clsx";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 type TProps = TClassName<{}>
 
 export const Catalog = ({ className }: TProps) => {
+  const router = useRouter()
   const isCatalogPage = usePathname().includes('catalog')
   const [showAllProducts, setShowAllProducts] = useState(isCatalogPage)
   const [isOpenfilter, setIsOpenfilter] = useState(true)
@@ -41,8 +42,8 @@ export const Catalog = ({ className }: TProps) => {
   return (
     <section className={clsx("pt-[1px] mt-[-1px] relative", className, !isCatalogPage && showAllProducts && "mb-[200px]", isCatalogPage && "!pt-[10px]")}>
       <div className="absolute w-screen left-0 top-0 sm:max-h-[1700px] max-h-[3000px] h-full bg-secondary-bg z-[-1]"></div>
-      <Container className="">
-        <LgHidden>
+      <LgHidden>
+        <Container className="">
           <div className={clsx("flex items-center justify-between mb-[27px]", isCatalogPage && "!mt-[43px]")}>
             <h2 className="text-white-light-grey text-[50px] font-extrabold leading-[100%]">Каталог цветов</h2>
             <div className="flex items-center gap-[25px]">
@@ -68,31 +69,32 @@ export const Catalog = ({ className }: TProps) => {
               <BuildBouquetSelectBudget />
             </div>
           </AnimationHeightWrapper>
-          <StickyScrollWrapper
-            isOpen={scrollStarted && isCatalogPage && (selectListLength !== 0)}
-            offset={110}
-            className="bg-secondary-bg"
-          >
-            <AnimationHeightWrapper isOpen={!isOpenfilter}>
-              <div className="flex items-center gap-[20px] m-[15px_0px] pt-[5px]">
-                <Title23px>{selectListLength === 0 ? "Ничего не выбрано" : "Выбрано"}</Title23px>
-                <div className="flex gap-[15px] overflow-x-scroll">
-                  {selectList.filter(item => item.isSelect).map(item => (
-                    <div key={item.title} className="border-yellow border-[1px] rounded-[10px] p-[10px] flex-center gap-[5px]">
-                      <p className="text-[14px] text-nowrap">{item.title}</p>
-                      <Button onClick={() => handleSelectList({...item, isSelect: false})}>
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M8.9257 7.99916L13.6132 2.41166C13.6918 2.31881 13.6257 2.17773 13.5043 2.17773H12.0793C11.9953 2.17773 11.915 2.21523 11.8596 2.27952L7.99356 6.88845L4.12749 2.27952C4.07392 2.21523 3.99356 2.17773 3.90784 2.17773H2.48284C2.36142 2.17773 2.29534 2.31881 2.37392 2.41166L7.06142 7.99916L2.37392 13.5867C2.35631 13.6074 2.34502 13.6327 2.34138 13.6596C2.33774 13.6865 2.3419 13.7139 2.35337 13.7386C2.36484 13.7632 2.38313 13.784 2.40608 13.7985C2.42903 13.8131 2.45568 13.8207 2.48284 13.8206H3.90784C3.99177 13.8206 4.07213 13.7831 4.12749 13.7188L7.99356 9.10988L11.8596 13.7188C11.9132 13.7831 11.9936 13.8206 12.0793 13.8206H13.5043C13.6257 13.8206 13.6918 13.6795 13.6132 13.5867L8.9257 7.99916Z" fill="#8C8C8C"/>
-                        </svg>
-                      </Button>
-                    </div>
-                  ))}
-                </div>
+        </Container>
+        <AnimationHeightWrapper isOpen maxHeight={showAllProducts ? 10000 : 1000} className="lg:mt-[32px] mt-[0px] relative">
+          <Container className="">
+            <ProductCatalog />
+          </Container>
+          <div className={clsx("bottom-0 w-screen absolute transition-all duration-500", showAllProducts && "pointer-events-none opacity-0")}>
+            <div className="w-full relative h-[102px]">
+              <div className="absolute inset-0 flex justify-center">
+                <Image
+                  src="/images/catalog/hidden-bg.png"
+                  alt="hidden-bg"
+                  width={1000}
+                  height={102}
+                  className="object-cover object-center w-full"
+                />
               </div>
-            </AnimationHeightWrapper> 
-          </StickyScrollWrapper>
-        </LgHidden>
-      </Container>
+              <div style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)'}} className="w-full h-full absolute top-0"></div>
+              <div className="flex justify-center absolute top-0 left-0 w-full">
+                <Button onClick={() => setShowAllProducts(true)} className="bg-pink p-[17.3px_26px] rounded-[11px] active:scale-95">
+                  <p className="text-[18.4px] font-bold">Посмотреть все 52</p>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </AnimationHeightWrapper>
+      </LgHidden>
       <LgShow>
         {isCatalogPage && (
           <div className="mt-[30px] px-[16px] mb-[16px]">
@@ -122,37 +124,28 @@ export const Catalog = ({ className }: TProps) => {
             <BuildBouquetSelectBudget />
           </div>
         </AnimationHeightWrapper>
-      </LgShow>
-      
-      <AnimationHeightWrapper isOpen maxHeight={showAllProducts ? 10000 : 1000} className="lg:mt-[32px] mt-[0px] relative">
-        <SmShow>
-          <ProductCatalog />
-        </SmShow>
-        <SmHidden>
-          <Container className="">
-            <ProductCatalog />
-          </Container>
-          <div className={clsx("bottom-0 w-screen absolute transition-all duration-500", showAllProducts && "pointer-events-none opacity-0")}>
-            <div className="w-full relative h-[102px]">
-              <div className="absolute inset-0 flex justify-center">
-                <Image
-                  src="/images/catalog/hidden-bg.png"
-                  alt="hidden-bg"
-                  width={1000}
-                  height={102}
-                  className="object-cover object-center w-full"
-                />
-              </div>
-              <div style={{background: 'linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%)'}} className="w-full h-full absolute top-0"></div>
-              <div className="flex justify-center absolute top-0 left-0 w-full">
-                <Button onClick={() => setShowAllProducts(true)} className="bg-pink p-[17.3px_26px] rounded-[11px] active:scale-95">
-                  <p className="text-[18.4px] font-bold">Посмотреть все 52</p>
-                </Button>
+
+        <div className="relative">
+          {!showAllProducts && (
+            <div className="">
+              <div 
+                style={{background: 'linear-gradient(180deg, rgba(115, 115, 115, 0) 20.65%, #000 100%)'}} 
+                className="absolute bottom-0 h-[300px] left-0 w-full z-[1] opacity-[0.8]"
+              />
+              <div className="absolute left-0 bottom-[26px] w-full z-[2]">
+                <div className="px-[16px]">
+                  <Button onClick={() => router.push('/catalog')} className="bg-pink p-[17.3px_26px] rounded-[11px] active:scale-95 mt-[18px] w-full">
+                    <p className="text-[18.4px] font-bold">Посмотреть все {52}</p>
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        </SmHidden>
-      </AnimationHeightWrapper>
+          )}
+          <AnimationHeightWrapper isOpen maxHeight={showAllProducts ? 10000 : 730} className="lg:mt-[32px] mt-[0px] relative">
+            <ProductCatalog />
+          </AnimationHeightWrapper>
+        </div>
+      </LgShow>
     </section>
   );
 };

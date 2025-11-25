@@ -1,8 +1,9 @@
 'use client'
-import { ProfileUnauth } from "@/features/profile-unauth/ProfileUnauth";
-import { Container } from "@/shared/container/Container";
-import { NavAnimated } from "@/shared/nav-animated/NavAnimated";
-import { ProfileNavItems } from "@/utils/enam";
+import { useMe } from "@/api"
+import { ProfileUnauth } from "@/features/profile-unauth/ProfileUnauth"
+import { Container } from "@/shared/container/Container"
+import { NavAnimated } from "@/shared/nav-animated/NavAnimated"
+import { ProfileNavItems } from "@/utils/enam"
 import { Events } from "@/widgets/events/Events";
 import { ProfileFavorites } from "@/widgets/profile-favorites/ProfileFavorites";
 import { ProfileHistoryAndBonuses } from "@/widgets/profile-history-and-bonuses/ProfileHistoryAndBonuses";
@@ -10,11 +11,15 @@ import { ProfilePersonalData } from "@/widgets/profile-personal-data/ProfilePers
 import { ProfileSubscriptions } from "@/widgets/profile-subscriptions/ProfileSubscriptions";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useDevice } from "@/utils/hooks/useDevice"
 
 const navItems = Object.values(ProfileNavItems)
 
 export default function Page () {
+  const { data: user, isLoading } = useMe()
+  const device = useDevice().getDevice()
   const isAuth = true
+  // const isAuth = !!user
   const [activeValue, setActiveValue] = useState<ProfileNavItems[1]>(navItems[0])
   const [isSticky, setIsSticky] = useState(false)
 
@@ -35,7 +40,7 @@ export default function Page () {
           className="border-b-[1px] border-[#404040] bg-main-bg"
           style={{
             position: isSticky ? 'fixed' : 'relative',
-            top: isSticky ? '58px' : 'auto',
+            top: isSticky ? (device === 'mobile' ? '58px' : '70px') : 'auto',
             left: 0,
             right: 0,
           }}

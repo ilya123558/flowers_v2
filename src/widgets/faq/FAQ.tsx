@@ -4,8 +4,8 @@ import { Container } from "@/shared/container/Container";
 import { Title23px } from "@/shared/text/title23px/Title23px";
 import { Title55px } from "@/shared/text/title55px/Title55px";
 import { AnimationHeightWrapper } from "@/shared/wrappers/AnimationHeightWrapper";
-import { LgHidden } from "@/shared/wrappers/SizeHidden";
-import { LgShow } from "@/shared/wrappers/SizeShow";
+import { LgHidden, SmHidden } from "@/shared/wrappers/SizeHidden";
+import { LgShow, SmShow } from "@/shared/wrappers/SizeShow";
 import clsx from "clsx";
 import Image from "next/image";
 import { useState } from "react";
@@ -63,9 +63,9 @@ export const FAQ = () => {
   ]
 
   return (
-    <div className="roboto bg-secondary-bg">
+    <div className="roboto sm:bg-transparent bg-secondary-bg">
       <Container>
-        <LgHidden>
+        <SmHidden>
           <Title55px className="mt-[92px]">Часто задаваемые вопросы</Title55px>
           <div className="mt-[32px]">
             <ul className="flex flex-col gap-[9px]">
@@ -103,8 +103,8 @@ export const FAQ = () => {
               </div>
             </div>
           </div>
-        </LgHidden>
-        <LgShow>
+        </SmHidden>
+        <SmShow>
           <div className="pt-[35px] pb-[26px] mb-[-1px] mt-[-1px]">
             {/* <Title23px className="!font-extrabold !text-[#EBEBEB]">Часто задаваемые вопросы</Title23px> */}
             <div className="mt-[16px]">
@@ -140,7 +140,7 @@ export const FAQ = () => {
               </div>
             </div>
           </div>
-        </LgShow>
+        </SmShow>
       </Container>
     </div>
   );

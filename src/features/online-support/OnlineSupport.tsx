@@ -67,7 +67,7 @@ export const OnlineSupport = ({ hiddenPage, isComponent }: IProps) => {
 
   return (
     <div
-      className={`fixed sm:bottom-[32px] sm:right-[32px] bottom-0 left-0 right-0 sm:left-auto z-40 roboto transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      className={`fixed sm:block hidden sm:bottom-[32px] sm:right-[32px] bottom-0 left-0 right-0 sm:left-auto z-40 roboto transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
     >
       <div className="bg-[#000000B2] rounded-[10px] rounded-t-[10px] p-[13.2px_15px] flex items-center sm:justify-center justify-between gap-[7.5px] shadow-lg sm:m-0 m-[0px_13px_13px]">
         <SocialButton type="whatsapp" size="small" onClick={handleWhatsappClick} />
