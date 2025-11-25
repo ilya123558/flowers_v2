@@ -17,6 +17,8 @@
     "@mui/material": "^7.3.4",
     "@pbe/react-yandex-maps": "^1.2.5",
     "@reduxjs/toolkit": "^2.6.1",
+    "@tanstack/react-query": "^5.90.9",
+    "@tanstack/react-query-devtools": "^5.90.2",
     "@yandex/ymaps3-types": "^1.0.17959420",
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
