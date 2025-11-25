@@ -23,6 +23,13 @@ export const myActiveSubscriptionList: TMySubscription[] = [
         size: 'XS',
         emotion: 'Люблю',
       },
+      {
+        id: 'product-3-new',
+        img: '/images/product/product-main.png',
+        title: 'Солнечный день',
+        size: 'XS',
+        emotion: 'Люблю',
+      },
     ],
     subscription: {
       premium_delivery: true,

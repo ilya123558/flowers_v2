@@ -15,7 +15,7 @@ const basketSlice = createSlice({
   initialState: initialState,
   reducers: {
     incCount: (state) => {
-      state.count = state.count !== 10 ? state.count + 1 : 10
+      state.count = state.count !== 99 ? state.count + 1 : 99
     },
     decCount: (state) => {
       state.count = state.count !== 0 ? state.count - 1 : 0

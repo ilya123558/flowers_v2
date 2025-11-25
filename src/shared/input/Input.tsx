@@ -15,7 +15,7 @@ export const Input = ({setValue, value, className, label, classNameText, placeho
   return (
     <div className={clsx('w-full', className)}>
       {label && <p className={clsx("text-[#8C8C8C] text-[16px] mb-[4px] leading-[151%]", classNameText)}>{label}</p>}
-      <div className="relative z-10">
+      <div className="relative">
         <input 
           placeholder={placeholder}
           value={value}

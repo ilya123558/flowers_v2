@@ -61,7 +61,7 @@ export const Select = ({selectList, children, activeItem, handleChange, classNam
   return (
     <div ref={selectRef} className={clsx('w-full', className)}>
       {children && <p className={clsx("text-secondary text-[16px] mb-[4px]", classNameText)}>{children}</p>}
-      <div className="relative z-10">
+      <div className="relative z-10 w-full">
         <Button 
           onClick={handleClick} 
           className={`w-full flex justify-between items-center bg-[#111111] sm:p-[16px_17.5px] p-[14px_17.5px] rounded-[11px] relative`}
