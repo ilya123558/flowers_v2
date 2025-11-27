@@ -31,7 +31,7 @@ export const historyList: THistory[] = [
         product: {
           date: '12 октября 2025, 14:11',
           title: 'Осенний воздух',
-          size: "XS",
+          size: "L",
           subscription: {
             premium_delivery: true,
             subscription: {
@@ -61,7 +61,7 @@ export const historyList: THistory[] = [
         product: {
           date: '12 октября 2025, 14:11',
           title: 'Осенний воздух',
-          size: "XS",
+          size: "L",
           subscription: {
             premium_delivery: true,
             subscription: {
