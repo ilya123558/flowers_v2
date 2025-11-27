@@ -1,7 +1,7 @@
 export const premium_delivery_price = 2500
 export const discount = 15
 
-export const sizesList = ['XS', 'S', 'M', 'L', 'XL'] as const
+export const sizesList = ['S', 'M', 'L', 'XL'] as const
 export const emotionsList = ['Благодарю', 'Восхищаюсь', 'Горжусь', 'Уважаю', 'Люблю', 'Скучаю', 'Поддерживаю', 'Прошу прощения', 'Ценю'] as const
 export const flowersList = ['Красный тюльпан', 'Роза', 'Жёлтый тюльпан', 'Оранжевая роза', 'Роза'] as const
 

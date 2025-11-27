@@ -7,6 +7,7 @@ import { setOpenBasket } from '@/views/store/basket.slice'
 import { motion } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { SmShow } from '@/shared/wrappers/SizeShow'
+import { CatalogSearchNotification } from './CatalogSearchNotification'
 
 export const MobileMenu = () => {
   const pathname = usePathname()
@@ -74,161 +75,164 @@ export const MobileMenu = () => {
 
   return (
     <SmShow>
-      <nav className="lg:hidden fixed bottom-[10px] left-0 right-0  z-30 px-[12px]">
-        <div 
-          style={{background: 'linear-gradient(180deg, #2E2E2E 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.2) 100%)'}} 
-          className='border-[1px] border-[#3E3E3E] rounded-[18px] overflow-hidden backdrop-blur-[5px] h-full px-[2px]'
-        >
-          <div className="flex justify-between items-center h-[78px]">
-            {menuItems.map((item, index) => {
-              const isActive = item.link ? (item.link === '/' ? pathname === '/' : pathname.startsWith(item.link)) : false
+      <div className="inter">
+        <nav className="fixed bottom-[10px] left-0 right-0 z-30 px-[12px]">
+          <CatalogSearchNotification />
+          <div 
+            style={{background: 'linear-gradient(180deg, #2E2E2E 0%, rgba(0, 0, 0, 0.6) 80%, rgba(0, 0, 0, 0.2) 100%)'}} 
+            className='border-[1px] border-[#3E3E3E] rounded-[18px] overflow-hidden backdrop-blur-[5px] h-full px-[2px]'
+          >
+            <div className="flex justify-between items-center h-[78px]">
+              {menuItems.map((item, index) => {
+                const isActive = item.link ? (item.link === '/' ? pathname === '/' : pathname.startsWith(item.link)) : false
 
-              const content = (
-                <>
-                  {item.title === 'Корзина' ? (
-                    <div className={"relative w-[24px] h-[24px] flex items-center justify-center"}>
-                      {/* Эффект падающего товара */}
-                      {shouldAnimate && (
-                        <motion.div
-                          key={`drop-${basketCount}`}
-                          initial={{ y: -40, opacity: 1, scale: 0.5 }}
-                          animate={{
-                            y: 0,
-                            opacity: 0,
-                            scale: 0.3
-                          }}
-                          transition={{
-                            duration: 0.6,
-                            ease: [0.34, 1.56, 0.64, 1]
-                          }}
-                          className="absolute top-0 left-1/2 -translate-x-1/2"
-                        >
-                          <div className="w-[8px] h-[8px] rounded-full bg-[#EDBF81]" />
-                        </motion.div>
-                      )}
+                const content = (
+                  <>
+                    {item.title === 'Корзина' ? (
+                      <div className={"relative w-[24px] h-[24px] flex items-center justify-center"}>
+                        {/* Эффект падающего товара */}
+                        {shouldAnimate && (
+                          <motion.div
+                            key={`drop-${basketCount}`}
+                            initial={{ y: -40, opacity: 1, scale: 0.5 }}
+                            animate={{
+                              y: 0,
+                              opacity: 0,
+                              scale: 0.3
+                            }}
+                            transition={{
+                              duration: 0.6,
+                              ease: [0.34, 1.56, 0.64, 1]
+                            }}
+                            className="absolute top-0 left-1/2 -translate-x-1/2"
+                          >
+                            <div className="w-[8px] h-[8px] rounded-full bg-[#EDBF81]" />
+                          </motion.div>
+                        )}
 
-                      {/* Пульсирующее кольцо */}
-                      {shouldAnimate && (
-                        <motion.div
-                          key={`ring-${basketCount}`}
-                          initial={{ scale: 0.8, opacity: 0.8 }}
-                          animate={{
-                            scale: [0.8, 1.5, 2],
-                            opacity: [0.8, 0.4, 0]
-                          }}
-                          transition={{
-                            duration: 0.8,
-                            ease: "easeOut"
-                          }}
-                          className="absolute inset-0 rounded-full border-2 border-[#EDBF81]"
-                        />
-                      )}
+                        {/* Пульсирующее кольцо */}
+                        {shouldAnimate && (
+                          <motion.div
+                            key={`ring-${basketCount}`}
+                            initial={{ scale: 0.8, opacity: 0.8 }}
+                            animate={{
+                              scale: [0.8, 1.5, 2],
+                              opacity: [0.8, 0.4, 0]
+                            }}
+                            transition={{
+                              duration: 0.8,
+                              ease: "easeOut"
+                            }}
+                            className="absolute inset-0 rounded-full border-2 border-[#EDBF81]"
+                          />
+                        )}
 
-                      {/* Иконка корзины с анимацией */}
-                      <motion.div
-                        key={`basket-${basketCount}`}
-                        initial={{ scale: 1 }}
-                        animate={shouldAnimate ? {
-                          scale: [1, 0.9, 1.1, 1],
-                          y: [0, 2, -2, 0]
-                        } : {}}
-                        transition={{
-                          duration: 0.5,
-                          ease: "easeInOut",
-                          times: [0, 0.3, 0.6, 1]
-                        }}
-                        className="relative z-10"
-                      >
+                        {/* Иконка корзины с анимацией */}
                         <motion.div
-                          key={`color-${basketCount}`}
-                          initial={{ filter: 'brightness(1)' }}
+                          key={`basket-${basketCount}`}
+                          initial={{ scale: 1 }}
                           animate={shouldAnimate ? {
-                            filter: [
-                              'brightness(1) drop-shadow(0 0 0px rgba(237, 191, 129, 0))',
-                              'brightness(1.5) drop-shadow(0 0 8px rgba(237, 191, 129, 0.8))',
-                              'brightness(1.5) drop-shadow(0 0 8px rgba(237, 191, 129, 0.8))',
-                              'brightness(1) drop-shadow(0 0 0px rgba(237, 191, 129, 0))'
-                            ]
+                            scale: [1, 0.9, 1.1, 1],
+                            y: [0, 2, -2, 0]
                           } : {}}
                           transition={{
-                            duration: 0.8,
+                            duration: 0.5,
                             ease: "easeInOut",
-                            times: [0, 0.3, 0.7, 1]
+                            times: [0, 0.3, 0.6, 1]
                           }}
+                          className="relative z-10"
                         >
-                          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <motion.path
-                              key={`path-${basketCount}`}
-                              d="M15.7512 10.5004V6.00037C15.7512 5.0058 15.3561 4.05198 14.6529 3.34872C13.9496 2.64545 12.9958 2.25037 12.0012 2.25037C11.0066 2.25037 10.0528 2.64545 9.34956 3.34872C8.64629 4.05198 8.25121 5.0058 8.25121 6.00037V10.5004M19.6072 8.50737L20.8702 20.5074C20.9402 21.1724 20.4202 21.7504 19.7512 21.7504H4.25121C4.09341 21.7505 3.93735 21.7175 3.79315 21.6534C3.64896 21.5894 3.51985 21.4957 3.41423 21.3784C3.3086 21.2612 3.22882 21.1231 3.18006 20.973C3.1313 20.8229 3.11466 20.6643 3.13121 20.5074L4.39521 8.50737C4.42436 8.23093 4.55483 7.97507 4.76146 7.78912C4.96808 7.60318 5.23623 7.50032 5.51421 7.50037H18.4882C19.0642 7.50037 19.5472 7.93537 19.6072 8.50737ZM8.62621 10.5004C8.62621 10.5998 8.5867 10.6952 8.51637 10.7655C8.44605 10.8359 8.35066 10.8754 8.25121 10.8754C8.15175 10.8754 8.05637 10.8359 7.98604 10.7655C7.91572 10.6952 7.87621 10.5998 7.87621 10.5004C7.87621 10.4009 7.91572 10.3055 7.98604 10.2352C8.05637 10.1649 8.15175 10.1254 8.25121 10.1254C8.35066 10.1254 8.44605 10.1649 8.51637 10.2352C8.5867 10.3055 8.62621 10.4009 8.62621 10.5004ZM16.1262 10.5004C16.1262 10.5998 16.0867 10.6952 16.0164 10.7655C15.946 10.8359 15.8507 10.8754 15.7512 10.8754C15.6518 10.8754 15.5564 10.8359 15.486 10.7655C15.4157 10.6952 15.3762 10.5998 15.3762 10.5004C15.3762 10.4009 15.4157 10.3055 15.486 10.2352C15.5564 10.1649 15.6518 10.1254 15.7512 10.1254C15.8507 10.1254 15.946 10.1649 16.0164 10.2352C16.0867 10.3055 16.1262 10.4009 16.1262 10.5004Z"
-                              initial={{ stroke: isActive ? 'white' : '#9B9B9B' }}
-                              animate={shouldAnimate ? {
-                                stroke: [
-                                  isActive ? 'white' : '#9B9B9B',
-                                  '#EDBF81',
-                                  '#EDBF81',
-                                  isActive ? 'white' : '#9B9B9B'
-                                ]
-                              } : {}}
-                              transition={{
-                                duration: 0.8,
-                                ease: "easeInOut",
-                                times: [0, 0.3, 0.7, 1]
-                              }}
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                          </svg>
+                          <motion.div
+                            key={`color-${basketCount}`}
+                            initial={{ filter: 'brightness(1)' }}
+                            animate={shouldAnimate ? {
+                              filter: [
+                                'brightness(1) drop-shadow(0 0 0px rgba(237, 191, 129, 0))',
+                                'brightness(1.5) drop-shadow(0 0 8px rgba(237, 191, 129, 0.8))',
+                                'brightness(1.5) drop-shadow(0 0 8px rgba(237, 191, 129, 0.8))',
+                                'brightness(1) drop-shadow(0 0 0px rgba(237, 191, 129, 0))'
+                              ]
+                            } : {}}
+                            transition={{
+                              duration: 0.8,
+                              ease: "easeInOut",
+                              times: [0, 0.3, 0.7, 1]
+                            }}
+                          >
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <motion.path
+                                key={`path-${basketCount}`}
+                                d="M15.7512 10.5004V6.00037C15.7512 5.0058 15.3561 4.05198 14.6529 3.34872C13.9496 2.64545 12.9958 2.25037 12.0012 2.25037C11.0066 2.25037 10.0528 2.64545 9.34956 3.34872C8.64629 4.05198 8.25121 5.0058 8.25121 6.00037V10.5004M19.6072 8.50737L20.8702 20.5074C20.9402 21.1724 20.4202 21.7504 19.7512 21.7504H4.25121C4.09341 21.7505 3.93735 21.7175 3.79315 21.6534C3.64896 21.5894 3.51985 21.4957 3.41423 21.3784C3.3086 21.2612 3.22882 21.1231 3.18006 20.973C3.1313 20.8229 3.11466 20.6643 3.13121 20.5074L4.39521 8.50737C4.42436 8.23093 4.55483 7.97507 4.76146 7.78912C4.96808 7.60318 5.23623 7.50032 5.51421 7.50037H18.4882C19.0642 7.50037 19.5472 7.93537 19.6072 8.50737ZM8.62621 10.5004C8.62621 10.5998 8.5867 10.6952 8.51637 10.7655C8.44605 10.8359 8.35066 10.8754 8.25121 10.8754C8.15175 10.8754 8.05637 10.8359 7.98604 10.7655C7.91572 10.6952 7.87621 10.5998 7.87621 10.5004C7.87621 10.4009 7.91572 10.3055 7.98604 10.2352C8.05637 10.1649 8.15175 10.1254 8.25121 10.1254C8.35066 10.1254 8.44605 10.1649 8.51637 10.2352C8.5867 10.3055 8.62621 10.4009 8.62621 10.5004ZM16.1262 10.5004C16.1262 10.5998 16.0867 10.6952 16.0164 10.7655C15.946 10.8359 15.8507 10.8754 15.7512 10.8754C15.6518 10.8754 15.5564 10.8359 15.486 10.7655C15.4157 10.6952 15.3762 10.5998 15.3762 10.5004C15.3762 10.4009 15.4157 10.3055 15.486 10.2352C15.5564 10.1649 15.6518 10.1254 15.7512 10.1254C15.8507 10.1254 15.946 10.1649 16.0164 10.2352C16.0867 10.3055 16.1262 10.4009 16.1262 10.5004Z"
+                                initial={{ stroke: isActive ? 'white' : '#9B9B9B' }}
+                                animate={shouldAnimate ? {
+                                  stroke: [
+                                    isActive ? 'white' : '#9B9B9B',
+                                    '#EDBF81',
+                                    '#EDBF81',
+                                    isActive ? 'white' : '#9B9B9B'
+                                  ]
+                                } : {}}
+                                transition={{
+                                  duration: 0.8,
+                                  ease: "easeInOut",
+                                  times: [0, 0.3, 0.7, 1]
+                                }}
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              />
+                            </svg>
+                          </motion.div>
                         </motion.div>
-                      </motion.div>
-                    </div>
-                  ) : (
-                    <div className="w-[24px] h-[24px] flex items-center justify-center">
-                      {item.icon(isActive)}
-                    </div>
-                  )}
-                  <span className={clsx(
-                    'text-[14px] font-normal roboto mt-[8.5px]',
-                    isActive ? 'text-white' : 'text-[#9B9B9B]'
-                  )}>
-                    {item.title}
-                  </span>
-                </>
-              )
+                      </div>
+                    ) : (
+                      <div className="w-[24px] h-[24px] flex items-center justify-center">
+                        {item.icon(isActive)}
+                      </div>
+                    )}
+                    <span className={clsx(
+                      'text-[14px] font-normal roboto mt-[8.5px]',
+                      isActive ? 'text-white' : 'text-[#9B9B9B]'
+                    )}>
+                      {item.title}
+                    </span>
+                  </>
+                )
 
-              if (item.link) {
-                return (
-                  <div className="w-full h-full p-[5px_3px]">
-                    <Link
-                      key={index}
-                      href={item.link}
-                      style={{
-                        background: isActive ? "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%)" : "transparent",
-                        transition: 'all 0.3'
-                      }}
-                      className={`flex flex-col items-center justify-center h-full transition-all w-full border-[1px] border-transparent rounded-[17.8px] p-[2px] text-center ${isActive && "!border-border-gray"}`}
-                    >
-                      {content}
-                    </Link>
-                  </div>
-                )
-              } else {
-                return (
-                  <div className="w-full h-full">
-                    <button
-                      key={index}
-                      onClick={item.onClick}
-                      className="flex flex-col items-center justify-center transition-all w-full rounded-[17.8px] h-full"
-                    >
-                      {content}
-                    </button>
-                  </div>
-                )
-              }
-            })}
+                if (item.link) {
+                  return (
+                    <div className="w-full h-full p-[5px_3px]">
+                      <Link
+                        key={index}
+                        href={item.link}
+                        style={{
+                          background: isActive ? "linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.1) 100%)" : "transparent",
+                          transition: 'all 0.3'
+                        }}
+                        className={`flex flex-col items-center justify-center h-full transition-all w-full border-[1px] border-transparent rounded-[17.8px] p-[2px] text-center ${isActive && "!border-border-gray"}`}
+                      >
+                        {content}
+                      </Link>
+                    </div>
+                  )
+                } else {
+                  return (
+                    <div className="w-full h-full">
+                      <button
+                        key={index}
+                        onClick={item.onClick}
+                        className="flex flex-col items-center justify-center transition-all w-full rounded-[17.8px] h-full"
+                      >
+                        {content}
+                      </button>
+                    </div>
+                  )
+                }
+              })}
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </SmShow>
   )
 }

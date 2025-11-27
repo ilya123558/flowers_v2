@@ -25,6 +25,10 @@ body {
   @include roboto-serif();
 }
 
+.inter {
+  @include inter();
+}
+
 .flex-center {
   display: flex; 
   justify-content: center;

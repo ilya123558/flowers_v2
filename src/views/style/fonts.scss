@@ -24,3 +24,10 @@
   );
 }
 
+@mixin inter() {
+  @include create-font(
+    'Inter',
+    '../fonts/Inter-VariableFont_opsz,wght.ttf',
+  );
+}
+
