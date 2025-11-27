@@ -6,7 +6,6 @@ import { LgShow } from "@/shared/wrappers/SizeShow";
 import { navItems } from "@/utils/const/nav";
 import { setOpenBasket, useAppDispatch, useAppSelector } from "@/views/store";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { LoginModal } from "@/features/login-modal/LoginModal";
