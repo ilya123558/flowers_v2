@@ -28,7 +28,7 @@ export const ProductCatalog = () => {
   }
 
   return (
-    <div>
+    <div id="catalog-product-list">
       <SmHidden>
         <p className="text-[17px] font-bold lg:pl-[0px]">Найдено 52</p>
         <div className="mt-[16px] grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 gap-[16px] lg:px-[0px]">
